@@ -29,7 +29,7 @@ export default function App() {
           color="#FF6A64"
           secondaryColor="#EE211E"
           trailLength={32}
-          trailWidth={7}
+          trailWidth={5}
           trailTaper={0.7}
           followSpeed={0.16}
           glowIntensity={2.2}
