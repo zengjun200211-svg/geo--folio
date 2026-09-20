@@ -15,6 +15,13 @@ const TOOL_GRADIENTS = [
   ['#7EE787', '#FFD166'],
 ]
 
+const CORE_SKILLS = [
+  { en: 'BUSINESS', cn: '业务能力', desc: '品牌种草+IP孵化全流程操盘' },
+  { en: 'PLATFORM', cn: '平台生态', desc: '多平台分发与信源运营' },
+  { en: 'AI AGENT', cn: 'AI Agent', desc: '工作流自动化与提效' },
+  { en: 'KNOWLEDGE', cn: '知识库搭建', desc: '知识沉淀、结构化以及自我更新迭代' },
+]
+
 function ToolTile({ name, slug, glyph, gradient }) {
   const [broken, setBroken] = useState(false)
   return (
@@ -58,12 +65,28 @@ export default function Profile() {
         />
 
         <div className="grid gap-8 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)]">
-          {/* 左：形象照 + 姓名合并卡片 */}
+          {/* 左：形象照 + 姓名 + 核心能力 */}
           <aside data-reveal>
-            <div className="group relative overflow-hidden rounded-xl border border-line bg-panel transition-colors duration-300 hover:border-brand/50">
-              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden border-b border-line bg-gradient-to-br from-panel2 to-panel">
+            <div className="group relative overflow-hidden rounded-xl border border-line bg-panel shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-20px_rgba(0,0,0,0.8)] transition-all duration-500 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_60px_-20px_rgba(238,33,30,0.25)]">
+              {/* 人像区：红色对角光晕 + 细网格 */}
+              <div
+                className="relative flex h-44 items-center justify-center overflow-hidden border-b border-line"
+                style={{
+                  background:
+                    'radial-gradient(120% 120% at 15% 0%, rgba(238,33,30,0.28) 0%, rgba(238,33,30,0.04) 45%, transparent 70%), linear-gradient(135deg, #14151a 0%, #0d0e13 100%)',
+                }}
+              >
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-[0.15]"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+                    backgroundSize: '28px 28px',
+                    maskImage: 'radial-gradient(80% 80% at 30% 20%, black, transparent)',
+                  }}
+                />
                 <svg
-                  className="h-20 w-20 text-mute/50"
+                  className="h-16 w-16 text-mute/40"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -72,10 +95,10 @@ export default function Profile() {
                   <circle cx="12" cy="8" r="4" />
                   <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" />
                 </svg>
-                <span className="absolute left-4 top-4 mono text-[9px] tracking-[0.25em] text-mute">
+                <span className="absolute left-4 top-3 mono text-[9px] tracking-[0.25em] text-mute">
                   PORTRAIT
                 </span>
-                <span className="absolute bottom-4 right-4 cn rounded border border-line/70 bg-bg/70 px-2 py-1 text-[10px] text-mute">
+                <span className="absolute bottom-3 right-4 cn rounded border border-line/70 bg-bg/70 px-2 py-0.5 text-[10px] text-mute backdrop-blur-sm">
                   【待补：个人形象照】
                 </span>
               </div>
@@ -89,6 +112,24 @@ export default function Profile() {
                 <p className="cn mt-3 text-[12.5px] leading-[1.9] text-sub">
                   仲恺农业工程学院 · 环境工程 2021–2025。让好内容，被 AI 看见。
                 </p>
+              </div>
+              {/* 核心能力 */}
+              <div className="border-t border-line/70 px-6 py-5">
+                <p className="mono mb-3 text-[9px] tracking-[0.25em] text-mute">
+                  CORE SKILLS / 核心能力
+                </p>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {CORE_SKILLS.map((s) => (
+                    <div
+                      key={s.en}
+                      className="group/skill rounded-lg border border-line/70 bg-panel2 px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:bg-[#1a1416] hover:shadow-[0_8px_20px_-8px_rgba(238,33,30,0.4)]"
+                    >
+                      <p className="mono text-[9px] tracking-[0.18em] text-brand">{s.en}</p>
+                      <p className="cn mt-0.5 text-[13px] font-bold text-text">{s.cn}</p>
+                      <p className="cn mt-0.5 text-[10.5px] leading-snug text-mute">{s.desc}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </aside>
@@ -116,7 +157,7 @@ export default function Profile() {
                       aria-expanded={open}
                     >
                       <span className="flex-1 min-w-0">
-                        <span className="mono block text-[9px] tracking-[0.2em] text-mute">
+                        <span className="mono block text-[11px] tracking-[0.18em] text-sub">
                           {String(i + 1).padStart(2, '0')} · {exp.dept} · {exp.period}
                         </span>
                         <span className="cn mt-1 block text-[15px] font-bold text-text">

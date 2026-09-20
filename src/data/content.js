@@ -217,7 +217,7 @@ export const INTERNSHIP = {
 export const AI_TOOLS = [
   {
     code: 'A-01',
-    name: 'ChatGPT / Gemini / DeepSeek',
+    name: 'ChatGPT / Gemini / DeepSeek 等语言大模型',
     en: 'MULTI-MODEL ROUTING',
     use: '按任务分工使用，不同需求配不同工具',
     output: null,
@@ -225,9 +225,9 @@ export const AI_TOOLS = [
   },
   {
     code: 'A-02',
-    name: 'Coze',
-    en: 'AGENT / AUTOMATION',
-    use: '机器人 / 自动化工作流，与 05 数据中台联动',
+    name: 'Agent 大模型编排',
+    en: 'AGENT ORCHESTRATION',
+    use: '用 Agent 搭建轻量化工具：模型 + Skill + 个人知识库组合调用，持续更新迭代，精准完成任务',
     output: null,
     pendingText: '工作流画布、节点、运行记录截图',
   },
@@ -241,9 +241,9 @@ export const AI_TOOLS = [
   },
   {
     code: 'A-04',
-    name: 'Obsidian 个人知识库',
-    en: 'KNOWLEDGE BASE',
-    use: '本 GEO 知识库本身：概念 / 业务流程 / 平台信源 / 监测迭代 / 面试准备 / 行业调研',
+    name: 'Obsidian 个人 + 工作知识库',
+    en: 'PERSONAL + WORK KNOWLEDGE',
+    use: 'Obsidian 是主力：个人知识更新迭代、工作方法论、工作内容整理都沉淀在这里；飞书知识库与 NotebookLM 侧重工作场景协同',
     output: null,
     pendingText: '目录树、MOC 首页、笔记正文截图（重点证据）',
   },
@@ -281,9 +281,9 @@ export const GEO_STANCE =
 
 // ---------- CONTACT / FAQ ----------
 export const CONTACT_ROWS = [
-  ['MAIL', '邮箱', null],
-  ['WECHAT', '微信', null],
-  ['TEL', '电话', null],
+  ['MAIL', '邮箱', '1075584739@qq.com'],
+  ['WECHAT', '微信', 'kFcVMe616'],
+  ['TEL', '电话', '15019181937'],
   ['BASE', '常驻', 'GUANGZHOU, CHINA · 广州'],
 ]
 
@@ -321,7 +321,7 @@ export const EXPERIENCE = [
       '主导 6 个 3C 数码矩阵账号从 0→1 的内容定位、选题、审核与发布节奏，跑通 5 个万粉标杆 IP；矩阵累计发布 286 条内容，全网总播放 1413W+、总互动 21W+、净增粉丝 6.6W+（矩阵口径）',
       '独立完成抖音垂直 IP 0→1：热点捕捉 → 脚本 → 拍摄剪辑 → 发布 → 粉丝运营全流程，单账号 0→1.06W 粉、累计获赞 124W+；用豆+/内容加热放大冷启动，沉淀「热点＋钩子结构」爆款方法论',
       '品牌商单交付：解读 Brief、跨平台种草整合营销，管理 KOC/素人资源与稿件合规，助力团队月营业额 30W+；负责里程碑倒排、走款跟进与成本核算',
-      '双鱼体育 × 十五运事件营销执行：管理百家号、搜狐号、网易号、公众号、今日头条内容发布',
+      '双鱼体育 × 十五运事件营销执行：对接其他部门进行沟通审稿，管理百家号、搜狐号、网易号、公众号、今日头条内容发布',
       '用飞书多维表格 + AI Agent 搭部门级数据中台：自动监控、异常预警、定期复盘；推动 AIGC 内容生产线（生图/文案/视频）落地为 SOP',
     ],
     keywords: ['账号矩阵', '爆款方法论', '抖音 IP 0-1', '商单交付', '项目统筹', '飞书多维表格', 'AI Agent', 'AIGC SOP'],
@@ -332,7 +332,7 @@ export const EXPERIENCE = [
     role: '用户运营实习生',
     period: '2025.03 - 2025.06',
     points: [
-      '参与制定「艾思科盛」品牌全网运营策略，统筹公众号 / 小红书 / B站 / CSDN 多平台矩阵 0→1，累计产出 232 篇内容，全网总曝光 43W+、互动 8.8K+，渗透目标科研用户圈层',
+      '参与制定艾思科蓝品牌全网运营策略，统筹公众号 / 小红书 / B站 / CSDN 多平台矩阵 0→1，累计产出 232 篇内容，全网总曝光 43W+、互动 8.8K+，渗透目标科研用户圈层',
       '主导公众号与小红书选题图文策划，打造高粘性干货内容：小红书单篇浏览 30W+（互动 6K+）、公众号 3.1W+，公域流量沉淀至品牌私域',
       '搭建「内容 → 线索 → 成交」转化路径，促成 2 单高客单论文辅导、变现 4.7W，验证内容商业化闭环',
       '专家/学者等高价值用户全周期维系，横向协调商务/开发/学术资源，保障交付按时按质',

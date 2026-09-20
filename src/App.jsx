@@ -31,7 +31,7 @@ export default function App() {
           trailLength={32}
           trailWidth={5}
           trailTaper={0.7}
-          followSpeed={0.16}
+          followSpeed={0.42}
           glowIntensity={2.2}
           glowSpread={1.4}
           hotspot={0.8}
@@ -43,6 +43,7 @@ export default function App() {
           idleTimeout={700}
           fadeDuration={700}
           blendMode="screen"
+          maxDevicePixelRatio={1}
         />
       )}
       <TopNav />

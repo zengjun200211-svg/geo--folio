@@ -62,8 +62,9 @@ export default function Contact() {
                 >
                   <summary className="cn flex cursor-pointer list-none items-center justify-between gap-4 text-[13.5px] font-bold text-text marker:hidden">
                     {f.q}
-                    <span className="mono shrink-0 text-brand transition-transform group-open:rotate-45">
-                      +
+                    {/* iOS 风胶囊开关：与任职经历一致 */}
+                    <span className="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border border-line bg-panel2 transition-colors duration-300 group-open:border-brand group-open:bg-brand">
+                      <span className="absolute left-1 h-4 w-4 rounded-full bg-mute transition-all duration-300 group-open:left-[26px] group-open:bg-white" />
                     </span>
                   </summary>
                   <p className="cn mt-3 text-[12.5px] leading-[1.9] text-sub">{f.a}</p>

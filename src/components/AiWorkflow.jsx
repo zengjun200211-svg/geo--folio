@@ -47,10 +47,10 @@ export default function AiWorkflow() {
           >
             <p className="mono text-[10px] tracking-[0.22em] text-brand">ROUTING PRINCIPLE</p>
             <p className="cn mt-3 text-[15px] font-bold leading-relaxed text-text">
-              不同需求配不同工具——模型负责生成，Agent 负责自动化，知识库负责沉淀，看板负责决策。
+              不同需求配不同工具——模型负责生成，Agent 负责编排，知识库负责沉淀，看板负责决策。
             </p>
             <p className="mono mt-4 text-[9px] tracking-[0.18em] text-mute">
-              LLM × COZE × BITABLE × OBSIDIAN
+              LLM × AGENT × BITABLE × OBSIDIAN
             </p>
           </article>
         </div>

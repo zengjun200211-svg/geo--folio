@@ -219,6 +219,7 @@ const GlowCursor = ({
     let lastInputTime = performance.now()
     let lastFrameTime = performance.now()
     let raf = 0
+    let lastRenderAt = 0
     let destroyed = false
 
     const resize = () => {
@@ -248,6 +249,8 @@ const GlowCursor = ({
       target.y = y
       pointerInside = true
       lastInputTime = performance.now()
+      // 空闲暂停后，新的指针事件唤醒渲染循环
+      if (!destroyed && raf === 0) raf = requestAnimationFrame(render)
     }
     const onPointerLeave = () => {
       pointerInside = false
@@ -259,6 +262,12 @@ const GlowCursor = ({
       const config = propsRef.current
       const delta = Math.min((now - lastFrameTime) / 16.667, 3)
       lastFrameTime = now
+      // 高刷屏节流：60fps 上限，减少全屏 shader 的 GPU 填充压力
+      if (now - lastRenderAt < 15) {
+        if (!destroyed) raf = requestAnimationFrame(render)
+        return
+      }
+      lastRenderAt = now
       if (initialized) {
         const headEase = 1 - Math.pow(1 - clamp(config.followSpeed, 0.01, 0.99), delta)
         const chainBase = clamp(0.28 + config.followSpeed * 0.35, 0.08, 0.92)
@@ -296,6 +305,13 @@ const GlowCursor = ({
       program.uniforms.uNormalBlend.value = config.blendMode === 'normal' ? 1 : 0
       program.uniforms.uTime.value = now * 0.001
       program.uniforms.uFade.value = fade
+      // 完全淡出且目标为 0 时，清一次画面并暂停 RAF，避免空闲时持续占用 GPU
+      if (fade < 0.01 && fadeTarget === 0) {
+        gl.clearColor(0, 0, 0, 0)
+        gl.clear(gl.COLOR_BUFFER_BIT)
+        raf = 0
+        return
+      }
       renderer.render({ scene: mesh })
       if (!destroyed) raf = requestAnimationFrame(render)
     }

@@ -44,7 +44,7 @@ function Card({ card, isActive, tone }) {
         ))}
       </h3>
       <p
-        className={`cn mt-2 text-[12px] leading-snug ${
+        className={`cn mt-2 text-[15px] leading-snug ${
           paper ? 'text-ink/60' : 'text-paper/90'
         }`}
       >
