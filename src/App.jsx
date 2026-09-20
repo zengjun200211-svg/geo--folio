@@ -1,4 +1,5 @@
-import CustomCursor from './components/CustomCursor.jsx'
+import { useState } from 'react'
+import GlowCursor from './components/GlowCursor.jsx'
 import TopNav from './components/TopNav.jsx'
 import Hero from './components/Hero.jsx'
 import IndexSection from './components/IndexSection.jsx'
@@ -15,10 +16,35 @@ import useReveal from './hooks/useReveal.js'
 
 export default function App() {
   useReveal()
+  // 仅桌面端（pointer: fine）启用发光拖尾光标，移动端回退系统光标
+  const [finePointer] = useState(
+    () => typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(pointer: fine)').matches
+  )
 
   return (
     <>
-      <CustomCursor />
+      {finePointer && (
+        <GlowCursor
+          overlay
+          color="#FF6A64"
+          secondaryColor="#EE211E"
+          trailLength={32}
+          trailWidth={7}
+          trailTaper={0.7}
+          followSpeed={0.16}
+          glowIntensity={2.2}
+          glowSpread={1.4}
+          hotspot={0.8}
+          brightness={1.45}
+          opacity={1}
+          pulseSpeed={0.9}
+          noiseStrength={0.03}
+          idleFade
+          idleTimeout={700}
+          fadeDuration={700}
+          blendMode="screen"
+        />
+      )}
       <TopNav />
       <main>
         <Hero />
