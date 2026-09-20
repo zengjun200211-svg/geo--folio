@@ -17,16 +17,18 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/40" />
       </div>
 
-      {/* 超大红色 V（VISIBLE 首字母，对应案例 P） */}
-      <div className="pointer-events-none absolute left-[6%] top-[9%] hidden items-start md:flex">
-        <span
-          className="font-display text-brand"
-          style={{ fontSize: 'clamp(220px, 25vw, 400px)', lineHeight: 0.82 }}
-          aria-hidden="true"
-        >
-          V
-        </span>
-        <span className="mt-2 h-[clamp(160px,19vw,310px)] w-px bg-brand/70" aria-hidden="true" />
+      {/* 超大红色 Portfolio 字标（与下方正文左对齐） */}
+      <div className="pointer-events-none absolute inset-x-0 top-[20%] hidden md:block">
+        <div className="mx-auto flex max-w-[1440px] items-start px-6 lg:px-10">
+          <span
+            className="font-display leading-[0.88] text-brand"
+            style={{ fontSize: 'clamp(72px, 10vw, 170px)' }}
+            aria-hidden="true"
+          >
+            Portfolio
+          </span>
+          <span className="ml-4 mt-3 h-[clamp(52px,6.5vw,120px)] w-px bg-brand/70" aria-hidden="true" />
+        </div>
       </div>
 
       {/* 主内容：能力行在左下（对齐参考帧 f13），落在画面最暗区域 */}
