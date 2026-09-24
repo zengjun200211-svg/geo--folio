@@ -111,7 +111,7 @@ export const PROFILE_BLOCKS = [
   },
   {
     tag: 'DATA × AI · 数据与 AI',
-    html: '<b>数据与 AI</b>——用飞书多维表格 + Coze 搭过部门级数据中台，日常重度使用 ChatGPT、Gemini、DeepSeek，不同需求配不同工具。',
+    html: '<b>数据与 AI</b>——用飞书多维表格搭部门级数据看板，自动出数、异常预警；日常重度使用 ChatGPT、Gemini、DeepSeek 做内容生产与分析，用 Obsidian 沉淀个人知识库。',
   },
 ]
 
@@ -198,7 +198,7 @@ export const COMMERCIAL_CASES = [
     ],
     result: null,
     geoNote:
-      '这些平台恰好是国内大模型重点抓取的信源：百家号→文心一言；头条→豆包；公众号→元宝；搜狐/网易→通义、DeepSeek。',
+      '飞书多维表格 + AI Agent 搭部门级数据中台：自动监控、异常预警、定期复盘；推动 AIGC 内容生产线落地为 SOP',
     sources: ['百家号', '今日头条', '搜狐', '网易', '公众号'],
   },
   { code: 'B-02', title: null, role: null, actions: [], result: null, geoNote: null, sources: [] },
@@ -217,10 +217,10 @@ export const INTERNSHIP = {
 export const AI_TOOLS = [
   {
     code: 'A-01',
-    name: 'ChatGPT / Gemini / DeepSeek 等语言大模型',
     en: 'MULTI-MODEL ROUTING',
-    use: '按任务分工使用，不同需求配不同工具',
+    name: 'Gemini/ChatGPT/DeepSeek 等 LLM 大模型',
     output: null,
+    use: '按任务分工使用，不同需求配不同工具',
     pendingText: '各模型分工举例 2-3 个真实场景 + 对话截图',
   },
   {
@@ -289,8 +289,8 @@ export const CONTACT_ROWS = [
 
 export const FAQ = [
   {
-    q: '曾俊是谁？',
-    a: '曾俊（ZENG JUN），仲恺农业工程学院毕业，现任广州索伦信息科技 MCN 运营专员，base 广州，求职方向为 GEO（Generative Engine Optimization，生成式引擎优化）业务岗位。',
+    q: '你为什么想转 GEO 方向？核心优势是什么？',
+    a: '内容运营做了两年，账号从 0 跑到破万粉、矩阵累计 1400W+ 播放，越来越发现 AI 正在接管搜索与内容分发入口——品牌要被 AI 看见、被用户信任，内容就必须结构化、可被引用。我的优势是真干过：品牌种草+IP孵化全流程、多平台分发与信源运营、数据看板、AI Agent 工作流、Obsidian 知识库，这套从方法论到落地的动作我都自己跑通过，能把 GEO 真正落到内容和数据上。',
   },
   {
     q: '你在内容运营上有什么成果？',
@@ -302,7 +302,7 @@ export const FAQ = [
   },
   {
     q: '你如何用 AI 和数据工具提效？',
-    a: '用飞书多维表格 + Coze 搭过部门级数据中台，实现自动出数、异常预警与复盘；日常重度使用 ChatGPT、Gemini、DeepSeek，按任务分工选型，并用 Obsidian 维护个人 GEO 知识库。',
+    a: '模型按任务分工选型（ChatGPT / Gemini / DeepSeek）；用 Agent 编排搭建轻量化工具，模型+Skill+个人知识库组合、持续迭代精准完成任务；飞书多维表格做部门级数据看板与自动出数；Obsidian 沉淀个人+工作知识库。',
   },
   {
     q: '什么是 GEO？你怎么理解 GEO？',
@@ -354,15 +354,21 @@ export const EXPERIENCE = [
 ]
 
 // slug 对应 simple-icons CDN，图标加载失败自动回退字母块
-export const TOOLS = [
-  { name: 'ChatGPT', use: '通用推理 / 文案', slug: 'openai', glyph: 'GPT' },
-  { name: 'Gemini', use: '长文 / 多模态', slug: 'googlegemini', glyph: 'G' },
-  { name: 'DeepSeek', use: '深度推理 / 代码', slug: 'deepseek', glyph: 'DS' },
-  { name: '豆包工作', use: '办公 / Agent', slug: 'doubao', glyph: '豆' },
-  { name: 'Qwen Agent', use: '通义智能体', slug: 'qwen', glyph: 'QW' },
-  { name: 'Photoshop', use: '视觉修图 / 海报', slug: 'adobephotoshop', glyph: 'Ps' },
-  { name: 'WorkBuddy', use: '工作助手', slug: 'asana', glyph: 'WB' },
-  { name: '飞书', use: '协同 / 多维表格', slug: 'lark', glyph: '飞' },
-  { name: 'NotebookLM', use: '笔记 / 知识库', slug: 'googlenotebooklm', glyph: 'NB' },
-  { name: 'Obsidian', use: '个人知识库', slug: 'obsidian', glyph: 'OB' },
+export const TOOL_GROUPS = [
+  { label: 'AI 模型', items: [
+    { name: 'ChatGPT', use: '通用推理 / 文案', local: '/icons/chatgpt.png', glyph: 'GPT' },
+    { name: 'Gemini', use: '长文 / 多模态', slug: 'googlegemini', color: '4796E3', glyph: 'G' },
+    { name: 'DeepSeek', use: '深度推理 / 代码', slug: 'deepseek', color: '4D6BFE', glyph: 'DS' },
+    { name: '豆包工作', use: '办公 / Agent', local: '/icons/doubao.png', glyph: '豆' },
+    { name: 'Qwen Agent', use: '通义智能体', slug: 'qwen', color: '615CED', glyph: 'QW' },
+    { name: 'WorkBuddy', use: '工作助手', local: '/icons/workbuddy.png', glyph: 'WB' },
+  ]},
+  { label: '设计', items: [
+    { name: 'Photoshop', use: '视觉修图 / 海报', slug: 'adobephotoshop', color: '31A8FF', glyph: 'Ps' },
+  ]},
+  { label: '协同与知识', items: [
+    { name: '飞书', use: '协同 / 多维表格', local: '/icons/lark.png', glyph: '飞' },
+    { name: 'NotebookLM', use: '笔记 / 知识库', local: '/icons/notebooklm.png', glyph: 'NB' },
+    { name: 'Obsidian', use: '个人知识库', slug: 'obsidian', color: '7C3AED', glyph: 'OB' },
+  ]},
 ]

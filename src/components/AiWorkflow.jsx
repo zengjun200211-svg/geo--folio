@@ -14,7 +14,7 @@ export default function AiWorkflow() {
           tags={['LLM', 'AGENT', 'KNOWLEDGE BASE', 'SOP']}
         />
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {AI_TOOLS.map((t, i) => (
             <article
               key={t.code}

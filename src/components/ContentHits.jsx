@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import SectionHeader from './SectionHeader.jsx'
 import ViewFrame from './ViewFrame.jsx'
 import {
@@ -82,6 +82,49 @@ export default function ContentHits() {
     }
   }
 
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    let raf = null, hovering = false, mx = 0
+    const onMove = (e) => { hovering = true; mx = e.clientX }
+    const onLeave = () => { hovering = false }
+    const loop = () => {
+      if (hovering) {
+        const rect = el.getBoundingClientRect()
+        const edge = 140
+        const x = mx - rect.left
+        if (x < edge) el.scrollLeft -= (edge - x) / 5
+        else if (x > rect.width - edge) el.scrollLeft += (x - (rect.width - edge)) / 5
+      }
+      raf = requestAnimationFrame(loop)
+    }
+    el.addEventListener('mousemove', onMove)
+    el.addEventListener('mouseleave', onLeave)
+    raf = requestAnimationFrame(loop)
+    return () => {
+      el.removeEventListener('mousemove', onMove)
+      el.removeEventListener('mouseleave', onLeave)
+      cancelAnimationFrame(raf)
+    }
+  }, [tab])
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const handler = (e) => {
+      if (el.scrollWidth <= el.clientWidth) return
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return
+      const atStart = el.scrollLeft <= 0
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 2
+      if ((e.deltaY < 0 && atStart) || (e.deltaY > 0 && atEnd)) return
+      el.scrollLeft += e.deltaY
+      e.preventDefault()
+      e.preventDefault()
+    }
+    el.addEventListener('wheel', handler, { passive: false })
+  }, [tab])
+
   return (
     <section id="hits" className="scroll-mt-16 py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
@@ -141,11 +184,11 @@ export default function ContentHits() {
         </div>
 
         {/* 编号项目卡 + 右侧选中大图（参考 f54） */}
-        <div className="mt-8 grid gap-8 xl:grid-cols-[minmax(0,1fr)_400px]">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
           <div
             ref={scrollRef}
             onWheel={onWheel}
-            className="hscroll flex gap-4 overflow-x-auto pb-5"
+            className="hscroll drag-scroll flex cursor-grab gap-4 overflow-x-auto pb-5 active:cursor-grabbing"
             data-reveal
           >
             {items.map((item, i) => (
@@ -168,7 +211,7 @@ export default function ContentHits() {
           </div>
 
           {/* 右侧选中详情 */}
-          <aside className="h-fit rounded-xl border border-line bg-panel p-5 xl:sticky xl:top-24" data-reveal>
+          <aside className="h-fit max-h-[calc(100vh-6rem)] overflow-y-auto rounded-xl border border-line bg-panel p-5 lg:sticky lg:top-24" data-reveal>
             <div className="mb-4 flex items-center justify-between">
               <span className="mono flex items-center gap-2 text-[10px] tracking-[0.2em] text-brand">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand blink" /> NOW VIEWING

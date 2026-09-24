@@ -17,7 +17,7 @@ export default function GeoLab() {
         <p className="mono mb-4 text-[10px] tracking-[0.22em] text-brand" data-reveal>
           METHOD · GEO 六步闭环
         </p>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6" data-reveal>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6" data-reveal>
           {GEO_STEPS.map((s, i) => (
             <div
               key={s}
@@ -72,7 +72,7 @@ export default function GeoLab() {
         </div>
 
         {/* 实验记录位 */}
-        <div className="mt-8 grid gap-6 xl:grid-cols-[340px_minmax(0,1fr)]" data-reveal>
+        <div className="mt-8 grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)]" data-reveal>
           <div className="flex flex-col justify-center rounded-xl border border-line bg-darkzone p-7">
             <span className="mono text-[11px] tracking-[0.2em] text-brand">G-01 · EXPERIMENT LOG</span>
             <h3 className="cn mt-3 text-[18px] font-bold text-text">AI 可见度监测实验</h3>

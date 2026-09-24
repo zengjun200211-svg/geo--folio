@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { CONTACT_ROWS, FAQ, SITE } from '../data/content.js'
 
 export default function Contact() {
+  const [openFaq, setOpenFaq] = useState(0)
   return (
     <section id="contact" className="scroll-mt-16 border-t border-line/60 bg-darkzone py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
@@ -16,7 +18,7 @@ export default function Contact() {
           欢迎内容运营 / GEO 方向的工作机会 · {SITE.stanceCn}
         </p>
 
-        <div className="mt-12 grid gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           {/* 联系方式 */}
           <div data-reveal>
             <ul className="divide-y divide-line/70 border-y border-line/70">
@@ -55,21 +57,34 @@ export default function Contact() {
               FAQ · 面试高频问题（问题库）
             </p>
             <div className="space-y-2.5">
-              {FAQ.map((f) => (
-                <details
+              {FAQ.map((f, i) => {
+                const open = openFaq === i
+                return (
+                <div
                   key={f.q}
-                  className="group rounded-lg border border-line bg-panel px-5 py-4 [&[open]]:border-brand/60"
+                  className={`group rounded-lg border bg-panel px-5 py-4 transition-colors duration-300 ${open ? 'border-brand/60' : 'border-line'}`}
                 >
-                  <summary className="cn flex cursor-pointer list-none items-center justify-between gap-4 text-[13.5px] font-bold text-text marker:hidden">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(open ? -1 : i)}
+                    className="cn flex w-full cursor-pointer items-center justify-between gap-4 text-left text-[13.5px] font-bold text-text"
+                  >
                     {f.q}
-                    {/* iOS 风胶囊开关：与任职经历一致 */}
-                    <span className="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border border-line bg-panel2 transition-colors duration-300 group-open:border-brand group-open:bg-brand">
-                      <span className="absolute left-1 h-4 w-4 rounded-full bg-mute transition-all duration-300 group-open:left-[26px] group-open:bg-white" />
+                    <span className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border bg-panel2 transition-colors duration-300 ${open ? 'border-brand bg-brand' : 'border-line'}`}>
+                      <span className={`absolute h-4 w-4 rounded-full transition-all duration-300 ${open ? 'left-[26px] bg-white' : 'left-1 bg-mute'}`} />
                     </span>
-                  </summary>
-                  <p className="cn mt-3 text-[12.5px] leading-[1.9] text-sub">{f.a}</p>
-                </details>
-              ))}
+                  </button>
+                  <div
+                    className="grid transition-[grid-template-rows] duration-300 ease-out"
+                    style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="cn mt-3 text-[12.5px] leading-[1.9] text-sub">{f.a}</p>
+                    </div>
+                  </div>
+                </div>
+                )
+              })}
             </div>
           </div>
         </div>

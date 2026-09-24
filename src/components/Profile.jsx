@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import SectionHeader from './SectionHeader.jsx'
-import { EXPERIENCE, TOOLS } from '../data/content.js'
+import { EXPERIENCE, TOOL_GROUPS } from '../data/content.js'
 
 const TOOL_GRADIENTS = [
   ['#FF6A64', '#A78BFA'],
@@ -22,30 +22,31 @@ const CORE_SKILLS = [
   { en: 'KNOWLEDGE', cn: '知识库搭建', desc: '知识沉淀、结构化以及自我更新迭代' },
 ]
 
-function ToolTile({ name, slug, glyph, gradient }) {
+function ToolTile({ name, slug, color, local, glyph, cardColor }) {
   const [broken, setBroken] = useState(false)
+  const src = local || (slug && `https://cdn.simpleicons.org/${slug}/${color}`)
   return (
     <div
-      title={name}
-      className="group flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl transition-transform duration-300 hover:-translate-y-1"
-      style={{
-        backgroundImage: `linear-gradient(#121319, #121319) padding-box, linear-gradient(135deg, ${gradient[0]}, ${gradient[1]}) border-box`,
-        border: '1px solid transparent',
-      }}
+      className="tool-tile group relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-[5px] hover:bg-white/[0.14] hover:border-white/25"
+      style={{ "--glow": (cardColor || color) ? `#${cardColor || color}` : "#22d3ee" }}
     >
-      <span className="flex h-9 w-9 items-center justify-center transition-transform duration-300 group-hover:scale-125">
-        {!broken ? (
-          <img
-            src={`https://cdn.simpleicons.org/${slug}/e6e6e6`}
-            alt={name}
-            loading="lazy"
-            className="h-9 w-9"
-            onError={() => setBroken(true)}
-          />
-        ) : (
-          <span className="mono text-[12px] font-bold text-text">{glyph}</span>
-        )}
-      </span>
+      <span className="tip">{name}</span>
+      {!src || broken ? (
+        <span
+          className="flex h-6 w-6 items-center justify-center rounded-md mono text-[11px] font-bold text-white"
+          style={{ backgroundColor: cardColor || "#333" }}
+        >
+          {glyph}
+        </span>
+      ) : (
+        <img
+          src={src}
+          alt={name}
+          loading="lazy"
+          className="h-6 w-6 object-contain opacity-100 transition-all duration-300 group-hover:opacity-100 group-hover:drop-shadow-[0_0_8px_var(--glow)]"
+          onError={() => setBroken(true)}
+        />
+      )}
     </div>
   )
 }
@@ -64,7 +65,7 @@ export default function Profile() {
           tags={['CONTENT OPS', 'HIT-MAKING', 'DATA', 'AI', 'GEO']}
         />
 
-        <div className="grid gap-8 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)]">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)]">
           {/* 左：形象照 + 姓名 + 核心能力 */}
           <aside data-reveal>
             <div className="group relative overflow-hidden rounded-xl border border-line bg-panel shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-20px_rgba(0,0,0,0.8)] transition-all duration-500 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_60px_-20px_rgba(238,33,30,0.25)]">
@@ -110,7 +111,7 @@ export default function Profile() {
                   CONTENT OPS <span className="text-brand">→</span> GEO
                 </p>
                 <p className="cn mt-3 text-[12.5px] leading-[1.9] text-sub">
-                  仲恺农业工程学院 · 环境工程 2021–2025。让好内容，被 AI 看见。
+                  仲恺农业工程学院 · 环境工程 2021–2025。IP 0-1孵化与多媒体平台分发；擅长用 AI + Agent + 知识库把内容生产结构化。
                 </p>
               </div>
               {/* 核心能力 */}
@@ -146,8 +147,8 @@ export default function Profile() {
                 return (
                   <div
                     key={exp.company}
-                    className={`overflow-hidden rounded-xl border transition-colors duration-300 ${
-                      open ? 'border-brand/50 bg-panel' : 'border-line bg-panel/60 hover:border-line/80'
+                    className={`exp-card relative overflow-hidden rounded-xl border transition-all duration-300 ${
+                      open ? 'border-brand/50 bg-panel' : 'border-line bg-panel/60 hover:-translate-y-1.5 hover:shadow-[0_18px_40px_-18px_rgba(238,33,30,0.5)]'
                     }`}
                   >
                     <button
@@ -219,14 +220,10 @@ export default function Profile() {
           <p className="mono mb-6 text-center text-[10px] tracking-[0.22em] text-brand">
             <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-brand align-middle" /> DAILY TOOLS / 我常用的工具 <span className="ml-2 inline-block h-1.5 w-1.5 rounded-full bg-brand align-middle" />
           </p>
-          <div className="marquee relative overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-            <div className="marquee-track flex w-max gap-4">
-              {[...TOOLS, ...TOOLS].map((t, i) => (
-                <ToolTile
-                  key={`${t.name}-${i}`}
-                  {...t}
-                  gradient={TOOL_GRADIENTS[i % TOOL_GRADIENTS.length]}
-                />
+          <div className="flex justify-center py-2">
+            <div className="dock inline-flex items-end gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl">
+              {TOOL_GROUPS.flatMap((g) => g.items).map((t) => (
+                <ToolTile key={t.name} {...t} />
               ))}
             </div>
           </div>

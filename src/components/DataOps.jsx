@@ -14,7 +14,7 @@ export default function DataOps() {
           tags={['BITABLE', 'COZE', 'DASHBOARD', 'ALERT']}
         />
 
-        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
           {/* 主视觉：中台看板大图（待截图） */}
           <div data-reveal>
             <div className="placeholder-box relative aspect-[16/10] overflow-hidden rounded-xl border border-line bg-panel">
