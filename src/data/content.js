@@ -221,7 +221,7 @@ export const AI_TOOLS = [
     name: 'Gemini/ChatGPT/DeepSeek 等 LLM 大模型',
     output: null,
     use: '按任务分工使用，不同需求配不同工具',
-    images: ['/images/agent/chatgpt.png', '/images/agent/gemini.png', '/images/agent/deepseek.png'],
+    images: ['images/agent/chatgpt.png', 'images/agent/gemini.png', 'images/agent/deepseek.png'],
     pendingText: '各模型分工举例 2-3 个真实场景 + 对话截图',
   },
   {
@@ -230,7 +230,7 @@ export const AI_TOOLS = [
     en: 'AGENT ORCHESTRATION',
     use: '用 Agent 搭建轻量化工具：模型 + Skill + 个人知识库组合调用，持续更新迭代，精准完成任务',
     output: null,
-    images: ['/images/agent/qwen.png', '/images/agent/doubao.png', '/images/agent/workbuddy-1.png', '/images/agent/todo.png'],
+    images: ['images/agent/qwen.png', 'images/agent/doubao.png', 'images/agent/workbuddy-1.png', 'images/agent/todo.png'],
     pendingText: '工作流画布、节点、运行记录截图',
   },
   {
@@ -239,7 +239,7 @@ export const AI_TOOLS = [
     en: 'BITABLE DASHBOARD',
     use: '部门级数据看板（详见 05 DATA OPS）',
     output: null,
-    images: ['/images/agent/zhongtai.png', '/images/agent/zhongtai-2.png'],
+    images: ['images/agent/zhongtai.png', 'images/agent/zhongtai-2.png'],
     pendingText: '看板截图随 05 板块素材一并提交',
   },
   {
@@ -248,7 +248,7 @@ export const AI_TOOLS = [
     en: 'PERSONAL + WORK KNOWLEDGE',
     use: 'Obsidian 是主力：个人知识更新迭代、工作方法论、工作内容整理都沉淀在这里；飞书知识库与 NotebookLM 侧重工作场景协同——用 NotebookLM 上传复盘录音/会议纪要，自动整理账号运营问题与整改建议，飞书知识库沉淀团队共享 SOP',
     output: null,
-    images: ['/images/knowledge/obsidian-1.png', '/images/knowledge/obsidian-2.png', '/images/knowledge/github-1.png', '/images/agent/notebooklm-1.png', '/images/knowledge/notebooklm-detail.png'],
+    images: ['images/knowledge/obsidian-1.png', 'images/knowledge/obsidian-2.png', 'images/knowledge/github-1.png', 'images/agent/notebooklm-1.png', 'images/knowledge/notebooklm-detail.png'],
     pendingText: '目录树、MOC 首页、笔记正文截图（重点证据）',
   },
   {
@@ -257,7 +257,7 @@ export const AI_TOOLS = [
     en: 'VIBE CODING LOG',
     use: '确立风格 → 搭 Hero+Profile+Hits 样板 → 整理内容利用 Agent 放入 → 接入 GlowCursor / 手风琴经历 / 工具 Dock → 补 AI Workflow 手风琴画廊、FAQ 丝滑展开、HITS 横条滚轮接管 → 每轮按截图反馈微调排版 / 字号 / 配色 / 响应式 → Git 多台设备同步打磨。',
     output: null,
-    images: ['/images/agent/vibe-coding.png', '/images/agent/doubao.png', '/images/knowledge/github-2.png'],
+    images: ['images/agent/vibe-coding.png', 'images/agent/doubao.png', 'images/knowledge/github-2.png'],
     pendingText: '建站过程截图同步留存，最后补入本卡',
   },
 ]
