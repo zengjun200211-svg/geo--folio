@@ -159,7 +159,6 @@ const AccordionGallery = ({
                 <span className="ag-panel__text" ref={(el) => (textRefs.current[i] = el)}>
                   {item.label}
                 </span>
-                <span className="ag-panel__icon" ref={(el) => (iconRefs.current[i] = el)}>{isActive ? '−' : '+'}</span>
               </span>
             )}
           </div>
