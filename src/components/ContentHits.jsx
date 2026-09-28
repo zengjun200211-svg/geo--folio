@@ -8,6 +8,13 @@ import {
   METHOD_TAGS_DEMO,
 } from '../data/content.js'
 
+const METHOD_STEPS = [
+  '前3秒钩子定生死：开头直接抛冲突/反常识结论/高收益承诺，3秒内留人再进正文',
+  '热点借势快半拍：蹭热榜/热梗要在48小时内出片，用自己账号视角二次解读而非硬贴',
+  '选题-脚本-钩子三件套：先定一句话爆点，再倒推脚本结构，钩子重复3次强化记忆点',
+  '数据复盘闭环：24小时看完播/5s留存/转评赞，低完播改前3秒，低互动改结尾CTA',
+]
+
 function Pending({ children = '待补' }) {
   return <span className="pending">{children}</span>
 }
@@ -82,7 +89,6 @@ export default function ContentHits() {
     }
   }
 
-
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
@@ -120,9 +126,9 @@ export default function ContentHits() {
       if ((e.deltaY < 0 && atStart) || (e.deltaY > 0 && atEnd)) return
       el.scrollLeft += e.deltaY
       e.preventDefault()
-      e.preventDefault()
     }
     el.addEventListener('wheel', handler, { passive: false })
+    return () => el.removeEventListener('wheel', handler)
   }, [tab])
 
   return (
@@ -146,7 +152,7 @@ export default function ContentHits() {
           }
         />
 
-        {/* 数据汇总大卡（数字严格按口径红线） */}
+        {/* 数据汇总大卡 */}
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-4" data-reveal>
           {HIT_STATS.map((s) => (
             <div key={s.en} className="group bg-panel p-6 transition-colors hover:bg-panel2">
@@ -183,12 +189,12 @@ export default function ContentHits() {
           ))}
         </div>
 
-        {/* 编号项目卡 + 右侧选中大图（参考 f54） */}
+        {/* 编号项目卡 + 右侧选中大图 */}
         <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
           <div
             ref={scrollRef}
             onWheel={onWheel}
-            className="hscroll drag-scroll flex cursor-grab gap-4 overflow-x-auto pb-5 active:cursor-grabbing"
+            className="hscroll flex gap-4 overflow-x-auto pb-5"
             data-reveal
           >
             {items.map((item, i) => (
@@ -199,7 +205,6 @@ export default function ContentHits() {
                 onSelect={() => setSel((s) => ({ ...s, [tab]: i }))}
               />
             ))}
-            {/* 空位提示卡 */}
             <div className="placeholder-box flex h-[384px] w-[180px] shrink-0 flex-col items-center justify-center gap-2 rounded-xl p-4 text-center">
               <span className="mono text-[9px] tracking-[0.2em] text-mute">MORE HITS</span>
               <span className="cn text-[11px] leading-relaxed text-mute">
@@ -210,7 +215,6 @@ export default function ContentHits() {
             </div>
           </div>
 
-          {/* 右侧选中详情 */}
           <aside className="h-fit max-h-[calc(100vh-6rem)] overflow-y-auto rounded-xl border border-line bg-panel p-5 lg:sticky lg:top-24" data-reveal>
             <div className="mb-4 flex items-center justify-between">
               <span className="mono flex items-center gap-2 text-[10px] tracking-[0.2em] text-brand">
@@ -274,15 +278,13 @@ export default function ContentHits() {
             </h3>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {[1, 2, 3, 4].map((n) => (
+            {METHOD_STEPS.map((text, i) => (
               <div
-                key={n}
-                className="placeholder-box flex items-center gap-3 rounded-lg p-4"
+                key={i}
+                className="flex items-start gap-3 rounded-lg border border-line/60 bg-panel/60 p-4 transition-colors hover:border-brand/50"
               >
-                <span className="font-display text-[20px] text-brand">{String(n).padStart(2, '0')}</span>
-                <span className="cn text-[12px] text-mute">
-                  <Pending>待补：从个人 SOP 摘第 {n} 条方法论</Pending>
-                </span>
+                <span className="font-display text-[20px] leading-none text-brand">{String(i + 1).padStart(2, '0')}</span>
+                <span className="cn text-[12.5px] leading-relaxed text-sub">{text}</span>
               </div>
             ))}
           </div>

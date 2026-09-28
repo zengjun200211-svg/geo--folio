@@ -1,6 +1,26 @@
 import SectionHeader from './SectionHeader.jsx'
 import ViewFrame from './ViewFrame.jsx'
+import AccordionGallery from './AccordionGallery.jsx'
 import { AI_TOOLS } from '../data/content.js'
+
+const LABELS = {
+  '/images/agent/chatgpt.png': 'ChatGPT',
+  '/images/agent/gemini.png': 'Gemini',
+  '/images/agent/deepseek.png': 'DeepSeek',
+  '/images/agent/qwen.png': '千问 Agent',
+  '/images/agent/doubao.png': '豆包工作',
+  '/images/agent/workbuddy-1.png': 'WorkBuddy',
+  '/images/agent/todo.png': '项目待办工作台',
+  '/images/agent/zhongtai.png': '数据中台',
+  '/images/agent/zhongtai-2.png': '数据看板',
+  '/images/knowledge/obsidian-1.png': 'Obsidian 笔记',
+  '/images/knowledge/obsidian-2.png': 'Obsidian MOC',
+  '/images/knowledge/github-1.png': 'GitHub 仓库',
+  '/images/knowledge/github-2.png': 'GitHub 提交',
+  '/images/agent/notebooklm-1.png': 'NotebookLM',
+  '/images/knowledge/notebooklm-detail.png': 'NotebookLM 复盘',
+  '/images/agent/vibe-coding.png': 'Vibe Coding',
+}
 
 export default function AiWorkflow() {
   return (
@@ -29,18 +49,33 @@ export default function AiWorkflow() {
               </div>
 
               <h3 className="cn mt-4 text-[17px] font-bold leading-snug text-text">{t.name}</h3>
-              <p className="cn mt-2 flex-1 text-[12.5px] leading-relaxed text-sub">{t.use}</p>
+              <p className="cn mt-2 text-[12.5px] leading-relaxed text-sub">{t.use}</p>
 
-              <div className="placeholder-box mt-5 rounded-lg p-4">
-                <p className="mono text-[9px] tracking-[0.18em] text-mute">EVIDENCE / 实际产出截图</p>
-                <p className="cn mt-1.5 text-[11.5px] leading-relaxed text-mute">
-                  【待补：{t.pendingText}】
-                </p>
-              </div>
+              {t.images && t.images.length > 0 ? (
+                <div className="mt-auto pt-4">
+                  <AccordionGallery
+                    items={t.images.map((src) => ({ image: src, label: LABELS[src] || t.name }))}
+                    defaultIndex={0}
+                    height={260}
+                    gap={6}
+                    radius={8}
+                    expandRatio={0.75}
+                    accentColor="#EE211E"
+                    trigger="click"
+                    grayscale={true}
+                  />
+                </div>
+              ) : (
+                <div className="placeholder-box mt-5 rounded-lg p-4">
+                  <p className="mono text-[9px] tracking-[0.18em] text-mute">EVIDENCE / 实际产出截图</p>
+                  <p className="cn mt-1.5 text-[11.5px] leading-relaxed text-mute">
+                    【待补：{t.pendingText}】
+                  </p>
+                </div>
+              )}
             </article>
           ))}
 
-          {/* 说明卡：工具分工逻辑 */}
           <article
             className="flex flex-col justify-between rounded-xl border border-brand/60 bg-darkzone p-6"
             data-reveal
