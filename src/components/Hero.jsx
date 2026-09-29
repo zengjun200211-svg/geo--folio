@@ -1,12 +1,11 @@
 import { HERO_CAPABILITIES, SITE } from '../data/content.js'
+import MosaicWaves from './MosaicWaves.jsx'
 
 export default function Hero() {
   return (
     <section id="top" className="relative flex h-screen min-h-[700px] flex-col overflow-hidden">
-      {/* 动态网格背景 */}
-      <div className="hero-grid absolute inset-0 opacity-[0.15]" aria-hidden="true" />
-      {/* 漂移光点 */}
-      <div className="hero-dots absolute inset-0" aria-hidden="true" />
+      {/* 马赛克波浪背景 */}
+      <MosaicWaves />
 
       {/* 暗色工作台氛围图 */}
       <div className="absolute inset-0">
@@ -19,13 +18,15 @@ export default function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/85 to-bg/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/40" />
+        {/* 底部过渡到下一板块 */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0A0A0C] via-[#0A0A0C]/60 to-transparent" />
       </div>
 
       {/* 超大红色 Portfolio 字标 */}
       <div className="pointer-events-none absolute inset-x-0 top-[20%] hidden md:block">
         <div className="mx-auto flex max-w-[1440px] items-start px-6 lg:px-10">
           <span
-            className="font-display leading-[0.88] text-brand"
+            className="font-display leading-[0.88] text-brand hero-float"
             style={{ fontSize: 'clamp(72px, 10vw, 170px)' }}
             aria-hidden="true"
           >
@@ -68,7 +69,7 @@ export default function Hero() {
           </div>
 
           <a href="#index" className="group flex flex-col items-center gap-2" aria-label="向下滚动到目录">
-            <span className="mono text-[10px] tracking-[0.25em] text-sub transition-colors group-hover:text-brand">
+            <span className="mono text-[10px] tracking-[0.25em] text-sub transition-colors group-hover:text-brand hero-pulse">
               SCROLL DOWN / 向下滑动
             </span>
             <span className="h-9 w-px bg-line">
