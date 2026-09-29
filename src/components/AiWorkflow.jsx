@@ -49,7 +49,7 @@ export default function AiWorkflow() {
               </div>
 
               <h3 className="cn mt-4 text-[17px] font-bold leading-snug text-text">{t.name}</h3>
-              <p className="cn mt-2 text-[12.5px] leading-relaxed text-sub">{t.use}</p>
+              <p className="cn mt-2 max-w-prose text-[12.5px] leading-relaxed text-sub">{t.use}</p>
 
               {t.images && t.images.length > 0 ? (
                 <div className="mt-auto pt-4">
@@ -61,7 +61,7 @@ export default function AiWorkflow() {
                     radius={8}
                     expandRatio={0.75}
                     accentColor="#EE211E"
-                    trigger="click"
+                    trigger="hover"
                     grayscale={true}
                   />
                 </div>

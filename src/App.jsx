@@ -12,17 +12,20 @@ import GeoLab from './components/GeoLab.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import CornerWidgets from './components/CornerWidgets.jsx'
+import ScrollProgress from './components/ScrollProgress.jsx'
 import useReveal from './hooks/useReveal.js'
+import useParallax from './hooks/useParallax.js'
 
 export default function App() {
   useReveal()
-  // 仅桌面端（pointer: fine）启用发光拖尾光标，移动端回退系统光标
+  useParallax()
   const [finePointer] = useState(
     () => typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(pointer: fine)').matches
   )
 
   return (
     <>
+      <ScrollProgress />
       {finePointer && (
         <GlowCursor
           overlay

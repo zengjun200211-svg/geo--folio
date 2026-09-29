@@ -1,7 +1,3 @@
-/**
- * 板块页头三件套：编号行（红点 + 等宽大写）→ 超大英文标题 → 中文副题 → 标签行
- * right 插槽可放右侧辅助文字（参考 f79 ARCHIVE）
- */
 export default function SectionHeader({ no, code, title, cn, tags = [], right = null, dark = false }) {
   return (
     <div className="relative mb-12 md:mb-16">
@@ -13,7 +9,8 @@ export default function SectionHeader({ no, code, title, cn, tags = [], right = 
       </div>
       <h2
         data-reveal
-        className="display text-text"
+        data-parallax="0.08"
+        className="display text-text will-change-transform"
         style={{ fontSize: 'clamp(42px, 5.6vw, 88px)' }}
       >
         {title}

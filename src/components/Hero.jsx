@@ -3,7 +3,12 @@ import { HERO_CAPABILITIES, SITE } from '../data/content.js'
 export default function Hero() {
   return (
     <section id="top" className="relative flex h-screen min-h-[700px] flex-col overflow-hidden">
-      {/* 暗色工作台氛围图（AI 生成，主体为多屏数据看板；非二次元插画） */}
+      {/* 动态网格背景 */}
+      <div className="hero-grid absolute inset-0 opacity-[0.15]" aria-hidden="true" />
+      {/* 漂移光点 */}
+      <div className="hero-dots absolute inset-0" aria-hidden="true" />
+
+      {/* 暗色工作台氛围图 */}
       <div className="absolute inset-0">
         <img
           src="/hero-workbench.jpg"
@@ -12,12 +17,11 @@ export default function Hero() {
           loading="eager"
           fetchPriority="high"
         />
-        {/* 左侧压暗给文字留呼吸区 + 底部渐变接正文 */}
         <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/85 to-bg/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/40" />
       </div>
 
-      {/* 超大红色 Portfolio 字标（与下方正文左对齐） */}
+      {/* 超大红色 Portfolio 字标 */}
       <div className="pointer-events-none absolute inset-x-0 top-[20%] hidden md:block">
         <div className="mx-auto flex max-w-[1440px] items-start px-6 lg:px-10">
           <span
@@ -31,7 +35,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 主内容：能力行在左下（对齐参考帧 f13），落在画面最暗区域 */}
       <div className="relative z-10 mx-auto flex h-full w-full max-w-[1440px] flex-col justify-end px-6 pb-24 pt-28 lg:px-10">
         <div className="w-full max-w-md">
           <p className="label label-red mb-6" data-reveal>
@@ -57,15 +60,10 @@ export default function Hero() {
           </ul>
         </div>
 
-        {/* 底部信息行 */}
         <div className="mt-12 flex items-end justify-between gap-6">
           <div className="mono space-y-1 text-[10px] leading-relaxed tracking-[0.18em] text-mute">
-            <p>
-              TEL — <span className="pending">待补</span>
-            </p>
-            <p>
-              MAIL — <span className="pending">待补</span>
-            </p>
+            <p>TEL — <span className="pending">待补</span></p>
+            <p>MAIL — <span className="pending">待补</span></p>
             <p>BASE — {SITE.base}</p>
           </div>
 
