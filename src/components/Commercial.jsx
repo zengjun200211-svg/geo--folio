@@ -70,22 +70,42 @@ function CaseDetail({ item }) {
         </div>
       </div>
 
-      {/* GEO 注解：平台 → 大模型信源 */}
-      <div className="mt-8 rounded-lg border-2 border-brand bg-white/60 p-5">
-        <p className="mono mb-3 text-[10px] tracking-[0.22em] text-brand">
-          GEO NOTE · 为什么这些平台重要
-        </p>
-        <div className="grid gap-2 sm:grid-cols-2">
-          {SOURCE_MAP.map(([src, model]) => (
-            <div key={src} className="flex items-center gap-2 cn text-[12.5px] text-ink/85">
-              <span className="font-bold">{src}</span>
-              <span className="mono text-[12px] text-ink/40">→</span>
-              <span>{model}</span>
-            </div>
-          ))}
+      {item.images && (
+        <div className="mt-8">
+          <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">
+            PUBLISHED ARTICLES / 已发布推文
+          </p>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+            {item.images.map((src) => (
+              <img
+                key={src}
+                src={src}
+                alt="公众号推文封面"
+                className="aspect-[3/4] w-full rounded-md border border-ink/15 object-cover object-top transition-transform hover:scale-[1.02]"
+                loading="lazy"
+              />
+            ))}
+          </div>
         </div>
-        <p className="cn mt-3 text-[11.5px] leading-relaxed text-ink/60">{item.geoNote}</p>
-      </div>
+      )}
+
+      {item.code === 'B-01' && (
+        <div className="mt-8 rounded-lg border-2 border-brand bg-white/60 p-5">
+          <p className="mono mb-3 text-[10px] tracking-[0.22em] text-brand">
+            GEO NOTE · 为什么这些平台重要
+          </p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {SOURCE_MAP.map(([src, model]) => (
+              <div key={src} className="flex items-center gap-2 cn text-[12.5px] text-ink/85">
+                <span className="font-bold">{src}</span>
+                <span className="mono text-[12px] text-ink/40">→</span>
+                <span>{model}</span>
+              </div>
+            ))}
+          </div>
+          <p className="cn mt-3 text-[11.5px] leading-relaxed text-ink/60">{item.geoNote}</p>
+        </div>
+      )}
     </div>
   )
 }
@@ -104,7 +124,6 @@ export default function Commercial() {
         />
 
         <div className="grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
-          {/* 档案列表（参考 f56） */}
           <div data-reveal>
             <div className="overflow-hidden rounded-xl border border-line bg-panel">
               <div className="flex items-center justify-between border-b border-line px-5 py-3">
@@ -130,7 +149,6 @@ export default function Commercial() {
               ))}
             </div>
 
-            {/* 实习矩阵小卡 */}
             <div className="mt-6 rounded-xl border border-line bg-panel p-5">
               <p className="mono text-[10px] tracking-[0.2em] text-brand">INTERNSHIP · 实习矩阵</p>
               <p className="cn mt-2 text-[14px] font-bold text-text">{INTERNSHIP.title}</p>
@@ -145,7 +163,6 @@ export default function Commercial() {
             </div>
           </div>
 
-          {/* 右侧详情大内容区 */}
           <div data-reveal data-reveal-delay="0.06">
             <div className="relative">
               <ViewFrame on />

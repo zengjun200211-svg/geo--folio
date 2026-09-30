@@ -201,7 +201,29 @@ export const COMMERCIAL_CASES = [
       '飞书多维表格 + AI Agent 搭部门级数据中台：自动监控、异常预警、定期复盘；推动 AIGC 内容生产线落地为 SOP',
     sources: ['百家号', '今日头条', '搜狐', '网易', '公众号'],
   },
-  { code: 'B-02', title: null, role: null, actions: [], result: null, geoNote: null, sources: [] },
+  {
+    code: 'B-02',
+    title: '李原宇篮球 · 公众号代运营',
+    role: '公众号内容运营',
+    actions: [
+      '从 0 搭建「李原宇篮球」公众号内容体系：选题策划、文案撰写、视觉排版、发布全流程',
+      '结合 CBA 职业球员教练 IP，输出寒假训练营招生、双十一课程促销、学员福利等系列推文',
+      '围绕家长决策路径设计转化链路：课程优惠、抽奖、老带新、集赞兑换，推文内嵌报名引导',
+      '配合活动节奏（开学季/寒假班/大促节点）做内容排期，多校区信息统一口径',
+    ],
+    result: null,
+    geoNote: null,
+    sources: ['微信公众号'],
+    images: [
+      'images/commercial/liyuanyu-1.png',
+      'images/commercial/liyuanyu-2.png',
+      'images/commercial/liyuanyu-3.png',
+      'images/commercial/liyuanyu-4.png',
+      'images/commercial/liyuanyu-5.png',
+      'images/commercial/liyuanyu-6.png',
+      'images/commercial/liyuanyu-7.png',
+    ],
+  },
 ]
 
 export const INTERNSHIP = {
