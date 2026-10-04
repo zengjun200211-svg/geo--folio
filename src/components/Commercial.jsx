@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import SectionHeader from './SectionHeader.jsx'
 import ViewFrame from './ViewFrame.jsx'
+import CircularCarousel from './CircularCarousel.jsx'
 import { COMMERCIAL_CASES, INTERNSHIP } from '../data/content.js'
 
 const SOURCE_MAP = [
@@ -37,7 +38,7 @@ function CaseDetail({ item }) {
         <div>
           <p className="mono mb-2 text-[10px] tracking-[0.2em] text-ink/50">RESULT / 结果数据</p>
           <p className="cn text-[14px]">
-            <span className="text-ink/40">【发布篇数 / 阅读 / 播放等，待用户提供】</span>
+            {item.result ? item.result : <span className="text-ink/40">【发布篇数 / 阅读 / 播放等，待用户提供】</span>}
           </p>
         </div>
       </div>
@@ -70,20 +71,35 @@ function CaseDetail({ item }) {
         </div>
       </div>
 
-      {item.images && (
+      {item.images && item.images.length >= 3 && (
         <div className="mt-8">
           <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">
             PUBLISHED ARTICLES / 已发布推文
           </p>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+          <div className="relative h-[480px] rounded-lg bg-black/5">
+            <CircularCarousel
+              items={item.images.map((src, i) => ({ src, title: `推文 ${String(i+1).padStart(2,'0')}`, alt: `公众号推文封面 ${i+1}` }))}
+              preset="cylinder"
+              intro="rise"
+              cardWidth={240}
+              aspectRatio={0.75}
+              speed={6}
+              fadeColor="#1a1a1a"
+              cornerRadius={8}
+              captions
+            />
+          </div>
+        </div>
+      )}
+
+      {item.images && item.images.length < 3 && (
+        <div className="mt-8">
+          <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">
+            PUBLISHED ARTICLES / 已发布推文
+          </p>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {item.images.map((src) => (
-              <img
-                key={src}
-                src={src}
-                alt="公众号推文封面"
-                className="aspect-[3/4] w-full rounded-md border border-ink/15 object-cover object-top transition-transform hover:scale-[1.02]"
-                loading="lazy"
-              />
+              <img key={src} src={src} alt="公众号推文封面" className="aspect-[3/4] w-full rounded-md border border-ink/15 object-cover object-top" loading="lazy" />
             ))}
           </div>
         </div>

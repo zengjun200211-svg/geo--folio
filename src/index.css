@@ -379,3 +379,20 @@ body {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
+
+/* 选中文本 */
+::selection {
+  background: #ee211e;
+  color: #fff;
+}
+
+/* Hero 能力行 hover */
+.hero-cap-row {
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+.hero-cap-row:hover {
+  padding-left: 8px;
+}
+.hero-cap-row:hover .cap-en {
+  color: #ee211e;
+}

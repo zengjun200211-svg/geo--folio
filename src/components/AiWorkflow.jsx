@@ -1,6 +1,7 @@
 import SectionHeader from './SectionHeader.jsx'
 import ViewFrame from './ViewFrame.jsx'
 import AccordionGallery from './AccordionGallery.jsx'
+import FlexCarousel from './FlexCarousel.jsx'
 import { AI_TOOLS } from '../data/content.js'
 
 const LABELS = {

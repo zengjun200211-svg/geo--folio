@@ -1,0 +1,24 @@
+.flex-carousel {
+  position: relative; width: 100%; height: 100%; overflow: hidden;
+  cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent; overscroll-behavior: contain; outline: none;
+}
+.flex-carousel[data-dragging] { cursor: grabbing; }
+.flex-carousel:focus-visible { box-shadow: inset 0 0 0 2px rgba(238,33,30,0.55); }
+.flex-carousel__caption {
+  position: absolute; left: 0; right: 0; bottom: 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 0 16px; pointer-events: none; text-align: center;
+  animation: fc-reveal 900ms ease both; color: #fff;
+}
+.flex-carousel__title { font-size: 14px; font-weight: 600; line-height: 1.35; }
+.flex-carousel__count {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 12px; line-height: 1; font-variant-numeric: tabular-nums; opacity: 0.5;
+}
+.flex-carousel__digits { display: inline-flex; }
+.flex-carousel__digit { display: inline-block; height: 1em; overflow: hidden; }
+.flex-carousel__reel { display: flex; flex-direction: column; transition: transform 600ms cubic-bezier(0.22,1,0.36,1); }
+.flex-carousel__reel span { height: 1em; }
+.flex-carousel__slash { opacity: 0.6; }
+@keyframes fc-reveal { from { opacity: 0; } to { opacity: 1; } }

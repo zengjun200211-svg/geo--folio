@@ -1,6 +1,7 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useMemo } from 'react'
 import SectionHeader from './SectionHeader.jsx'
 import ViewFrame from './ViewFrame.jsx'
+import CircularCarousel from './CircularCarousel.jsx'
 import {
   HIT_GROUPS,
   HIT_STATS,
@@ -29,33 +30,28 @@ function HitCard({ item, selected, onSelect }) {
       }`}
       aria-pressed={selected}
     >
-      <ViewFrame className={selected ? 'is-on' : 'auto'} />
       {/* 封面区 */}
-      <div className="placeholder-box relative flex h-[268px] flex-col justify-between p-4">
-        <div className="flex items-start justify-between">
-          <span className="font-display text-[40px] leading-none text-brand">{item.code.slice(2)}</span>
-          <span
-            className="mono text-[9px] tracking-[0.2em] text-mute"
-            style={{ writingMode: 'vertical-rl' }}
-          >
-            SHORT VIDEO / HOOK
-          </span>
+      <div className="relative h-[268px] overflow-hidden">
+        <img
+          src={item.cover}
+          alt={item.title}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+        <div className="absolute right-2 top-2 rounded bg-black/50 px-1.5 py-0.5 backdrop-blur-sm">
+          <span className="mono text-[9px] tracking-[0.1em] text-white/90">{item.code}</span>
         </div>
-        <div className="text-center">
-          <p className="mono text-[10px] tracking-[0.18em] text-sub">
-            {item.account || '【待补：操盘账号名】'}
-          </p>
-          <p className="cn mt-2 text-[12px] text-mute">视频封面 / 原片 · 【待补】</p>
+        {/* 播放按钮 */}
+        <div className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/30">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M8 5v14l11-7z" />
+          </svg>
         </div>
       </div>
       {/* 信息区 */}
       <div className="border-t border-line p-3.5">
-        <p className="cn truncate text-[13px] font-bold text-text">
-          <Pending>待补：视频标题</Pending>
-        </p>
-        <p className="mono mt-1.5 text-[9px] tracking-[0.14em] text-mute">
-          {item.code} · PLAY/LIKE/GAIN 【待补】
-        </p>
+        <p className="cn truncate text-[13px] font-bold text-text">{item.title}</p>
+        <p className="mono mt-1.5 text-[9px] tracking-[0.14em] text-mute">{item.code} · {item.account}</p>
       </div>
     </button>
   )
@@ -73,12 +69,21 @@ function SpecRow({ k, v }) {
 }
 
 export default function ContentHits() {
-  const [tab, setTab] = useState('own')
+  const [tab, setTab] = useState('managed')
+  const [account, setAccount] = useState(null)
   const [sel, setSel] = useState({ own: 0, managed: 0 })
   const scrollRef = useRef(null)
 
-  const items = HIT_GROUPS[tab]
+  const allItems = HIT_GROUPS[tab]
+  const items = account ? allItems.filter((it) => it.account === account) : allItems
   const current = items[sel[tab]] ?? items[0]
+
+  // 所有账号列表
+  const accountList = useMemo(() => {
+    const map = {}
+    allItems.forEach((it) => { map[it.account] = (map[it.account] || 0) + 1 })
+    return Object.entries(map)
+  }, [allItems])
 
   const onWheel = (e) => {
     const el = scrollRef.current
@@ -176,7 +181,7 @@ export default function ContentHits() {
             <button
               key={t.id}
               type="button"
-              onClick={() => setTab(t.id)}
+              onClick={() => { setTab(t.id); setAccount(null) }}
               className={`rounded-full border px-5 py-2 transition-all duration-200 ${
                 tab === t.id
                   ? 'border-brand bg-brand text-white'
@@ -185,6 +190,31 @@ export default function ContentHits() {
             >
               <span className="cn text-[12px]">{t.cn}</span>
               <span className="mono ml-2 text-[9px] tracking-[0.16em] opacity-80">{t.en}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* 账号筛选 */}
+        <div className="mt-4 flex flex-wrap gap-2" data-reveal>
+          <button
+            type="button"
+            onClick={() => setAccount(null)}
+            className={`rounded-full border px-3 py-1.5 text-[11px] transition-all ${
+              !account ? 'border-brand bg-brand/20 text-brand' : 'border-line bg-panel text-sub hover:text-text'
+            }`}
+          >
+            全部 <span className="mono ml-1 text-[9px] opacity-60">{allItems.length}</span>
+          </button>
+          {accountList.map(([name, count]) => (
+            <button
+              key={name}
+              type="button"
+              onClick={() => setAccount(name === account ? null : name)}
+              className={`rounded-full border px-3 py-1.5 text-[11px] transition-all ${
+                account === name ? 'border-brand bg-brand/20 text-brand' : 'border-line bg-panel text-sub hover:text-text'
+              }`}
+            >
+              {name} <span className="mono ml-1 text-[9px] opacity-60">{count}</span>
             </button>
           ))}
         </div>
@@ -205,14 +235,6 @@ export default function ContentHits() {
                 onSelect={() => setSel((s) => ({ ...s, [tab]: i }))}
               />
             ))}
-            <div className="placeholder-box flex h-[384px] w-[180px] shrink-0 flex-col items-center justify-center gap-2 rounded-xl p-4 text-center">
-              <span className="mono text-[9px] tracking-[0.2em] text-mute">MORE HITS</span>
-              <span className="cn text-[11px] leading-relaxed text-mute">
-                每个账号补 3-8 条最能打的视频
-                <br />
-                （见 03 素材清单）
-              </span>
-            </div>
           </div>
 
           <aside className="h-fit max-h-[calc(100vh-6rem)] overflow-y-auto rounded-xl border border-line bg-panel p-5 lg:sticky lg:top-24" data-reveal>
@@ -223,20 +245,7 @@ export default function ContentHits() {
               <span className="mono text-[10px] tracking-[0.2em] text-mute">{current.code}</span>
             </div>
 
-            <div className="placeholder-box relative aspect-[4/3] overflow-hidden rounded-lg">
-              <ViewFrame on />
-              <div className="flex h-full flex-col items-center justify-center gap-2 text-center">
-                <span className="mono text-[10px] tracking-[0.2em] text-sub">SELECTED PREVIEW</span>
-                <span className="cn text-[12px] text-mute">竖版封面 / 内嵌播放器 · 【待补素材】</span>
-              </div>
-              <span className="absolute bottom-3 left-3 mono text-[9px] tracking-[0.16em] text-brand">
-                | {current.code}
-              </span>
-            </div>
-
-            <h3 className="cn mt-4 text-[15px] font-bold text-text">
-              <Pending>待补：视频标题</Pending>
-            </h3>
+            <h3 className="cn text-[15px] font-bold text-text">{current.title}</h3>
 
             <div className="mt-3">
               <SpecRow k="平台 / 账号" v={current.account} />

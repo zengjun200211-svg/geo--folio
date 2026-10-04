@@ -1,11 +1,23 @@
 import { HERO_CAPABILITIES, SITE } from '../data/content.js'
-import MosaicWaves from './MosaicWaves.jsx'
+import PatternWaves from './PatternWaves.jsx'
 
 export default function Hero() {
   return (
     <section id="top" className="relative flex h-screen min-h-[700px] flex-col overflow-hidden">
-      {/* 马赛克波浪背景 */}
-      <MosaicWaves />
+      {/* 点阵波浪背景 */}
+      <PatternWaves
+        preset="silk"
+        color="#EE211E"
+        backgroundColor="rgba(10,10,12,0)"
+        opacity={0.85}
+        spacing={9}
+        speed={0.3}
+        interactive={true}
+        cursorSize={80}
+        cursorStrength={0.7}
+        fade="edges"
+        fadeSize={0.4}
+      />
 
       {/* 暗色工作台氛围图 */}
       <div className="absolute inset-0">
@@ -23,16 +35,16 @@ export default function Hero() {
       </div>
 
       {/* 超大红色 Portfolio 字标 */}
-      <div className="pointer-events-none absolute inset-x-0 top-[20%] hidden md:block">
+      <div className="pointer-events-none absolute inset-x-0 top-[15%] md:top-[20%]">
         <div className="mx-auto flex max-w-[1440px] items-start px-6 lg:px-10">
           <span
             className="font-display leading-[0.88] text-brand hero-float"
-            style={{ fontSize: 'clamp(72px, 10vw, 170px)' }}
+            style={{ fontSize: 'clamp(48px, 10vw, 170px)' }}
             aria-hidden="true"
           >
             Portfolio
           </span>
-          <span className="ml-4 mt-3 h-[clamp(52px,6.5vw,120px)] w-px bg-brand/70" aria-hidden="true" />
+          <span className="ml-4 mt-3 hidden h-[clamp(52px,6.5vw,120px)] w-px bg-brand/70 md:block" aria-hidden="true" />
         </div>
       </div>
 
@@ -50,9 +62,9 @@ export default function Hero() {
                 key={en}
                 data-reveal
                 style={{ '--reveal-delay': `${0.06 * i}s` }}
-                className="flex items-baseline gap-3 border-b border-line/60 pb-2.5"
+                className="hero-cap-row flex cursor-default items-baseline gap-3 border-b border-line/60 pb-2.5"
               >
-                <span className="mono w-44 shrink-0 text-[12px] tracking-[0.12em] text-text">
+                <span className="cap-en mono w-44 shrink-0 text-[12px] tracking-[0.12em] text-text transition-colors">
                   {en}
                 </span>
                 <span className="cn text-[13px] text-sub">{cn}</span>

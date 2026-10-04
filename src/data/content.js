@@ -156,30 +156,56 @@ export const HIT_TABS = [
   { id: 'managed', cn: '操盘账号', en: 'MANAGED ACCOUNTS' },
 ]
 
-const blankVideo = (code, account, role) => ({
-  code,
-  account,
-  role,
-  title: null,
-  date: null,
-  plays: null,
-  likes: null,
-  comments: null,
-  follows: null,
-  hook: null,
+const v = (code, account, cover, title, link) => ({
+  code, account, cover, title,
+  link: link || null,
+  date: null, plays: null, likes: null, comments: null, follows: null, hook: null,
 })
 
 export const HIT_GROUPS = {
-  own: [
-    blankVideo('H-01', '抖音 · 3C 自有账号', '选题 / 脚本 / 拍摄 / 剪辑 / 发布（全流程独立）'),
-    blankVideo('H-02', '抖音 · 3C 自有账号', '选题 / 脚本 / 拍摄 / 剪辑 / 发布（全流程独立）'),
-    blankVideo('H-03', '抖音 · 3C 自有账号', '选题 / 脚本 / 拍摄 / 剪辑 / 发布（全流程独立）'),
-    blankVideo('H-04', '抖音 · 3C 自有账号', '选题 / 脚本 / 拍摄 / 剪辑 / 发布（全流程独立）'),
-  ],
+  own: [],
   managed: [
-    blankVideo('H-05', null, null),
-    blankVideo('H-06', null, null),
-    blankVideo('H-07', null, null),
+    // 回声屏幕所（6条）
+    v('H-01', '回声屏幕所', 'images/hits/h-01-01.jpg', 'vivo X500 屏幕开箱'),
+    v('H-02', '回声屏幕所', 'images/hits/h-01-02.jpg', 'vivo X500 屏幕测试'),
+    v('H-03', '回声屏幕所', 'images/hits/h-01-03.jpg', 'vivo X Fold6 屏幕测试'),
+    v('H-04', '回声屏幕所', 'images/hits/h-01-04.jpg', '屏幕之王爆款'),
+    v('H-05', '回声屏幕所', 'images/hits/h-01-05.jpg', '旗舰机户外发热测试'),
+    v('H-06', '回声屏幕所', 'images/hits/h-01-06.jpg', '曲面屏慢慢消失'),
+    // 回声现场影像对比（12条）
+    v('H-07', '回声现场影像对比', 'images/hits/h-02-01.jpg', 'F4 影像爆款'),
+    v('H-08', '回声现场影像对比', 'images/hits/h-02-02.jpg', 'vivo S60 影像 4K Live'),
+    v('H-09', '回声现场影像对比', 'images/hits/h-02-03.jpg', 'vivo X300E 调色盘创意'),
+    v('H-10', '回声现场影像对比', 'images/hits/h-02-04.jpg', 'X300s 蔡依林演唱会'),
+    v('H-11', '回声现场影像对比', 'images/hits/h-02-05.jpg', 'vivo X300 国风 01'),
+    v('H-12', '回声现场影像对比', 'images/hits/h-02-06.jpg', 'vivo X300 国风 02'),
+    v('H-13', '回声现场影像对比', 'images/hits/h-02-07.jpg', 'vivo X300 歌手'),
+    v('H-14', '回声现场影像对比', 'images/hits/h-02-08.jpg', 'vivo X300 长视频'),
+    v('H-15', '回声现场影像对比', 'images/hits/h-02-09.jpg', 'X Fold6 时尚之夜'),
+    v('H-16', '回声现场影像对比', 'images/hits/h-02-10.jpg', 'X Fold6 测评长视频'),
+    v('H-17', '回声现场影像对比', 'images/hits/h-02-11.jpg', '年度机皇爆款'),
+    v('H-18', '回声现场影像对比', 'images/hits/h-02-12.jpg', '邓紫棋爆款'),
+    // 回声拆机少女（7条）
+    v('H-19', '回声拆机少女', 'images/hits/h-03-01.jpg', 'iQOO 15T 拆机'),
+    v('H-20', '回声拆机少女', 'images/hits/h-03-02.jpg', 'iQOO Neo 跑分爆款'),
+    v('H-21', '回声拆机少女', 'images/hits/h-03-03.jpg', 'iQOO Z11s 开箱'),
+    v('H-22', '回声拆机少女', 'images/hits/h-03-04.jpg', 'vivo X300E 开箱'),
+    v('H-23', '回声拆机少女', 'images/hits/h-03-05.jpg', 'vivo X Fold6 拆机'),
+    v('H-24', '回声拆机少女', 'images/hits/h-03-06.jpg', '小米 17U 维修爆款'),
+    v('H-25', '回声拆机少女', 'images/hits/h-03-07.jpg', 'X500 拆机开箱'),
+    // 回声数码站（2条）
+    v('H-26', '回声数码站', 'images/hits/h-04-01.jpg', '华为爆款'),
+    v('H-27', '回声数码站', 'images/hits/h-04-02.jpg', '玄戎芯片爆款'),
+    // 回声系统测评（2条）
+    v('H-28', '回声系统测评', 'images/hits/h-05-01.jpg', 'X Fold6 原子工作台'),
+    v('H-29', '回声系统测评', 'images/hits/h-05-02.jpg', 'WWDC Tim 谢幕之作'),
+    // 回声行业观察（6条）
+    v('H-30', '回声行业观察', 'images/hits/h-06-01.jpg', 'iQOO 16 开发者大会'),
+    v('H-31', '回声行业观察', 'images/hits/h-06-02.jpg', 'X500 主摄爆料'),
+    v('H-32', '回声行业观察', 'images/hits/h-06-03.jpg', '真我 GT8 Pro'),
+    v('H-33', '回声行业观察', 'images/hits/h-06-04.jpg', '高通长鑫爆款'),
+    v('H-34', '回声行业观察', 'images/hits/h-06-05.jpg', '魅族 Flyme 爆款'),
+    v('H-35', '回声行业观察', 'images/hits/h-06-06.jpg', '魅族落寞爆款'),
   ],
 }
 
@@ -211,7 +237,7 @@ export const COMMERCIAL_CASES = [
       '围绕家长决策路径设计转化链路：课程优惠、抽奖、老带新、集赞兑换，推文内嵌报名引导',
       '配合活动节奏（开学季/寒假班/大促节点）做内容排期，多校区信息统一口径',
     ],
-    result: null,
+    result: '发布推文 10+ 篇，累计阅读 5000+',
     geoNote: null,
     sources: ['微信公众号'],
     images: [
@@ -383,19 +409,19 @@ export const EXPERIENCE = [
 // slug 对应 simple-icons CDN，图标加载失败自动回退字母块
 export const TOOL_GROUPS = [
   { label: 'AI 模型', items: [
-    { name: 'ChatGPT', use: '通用推理 / 文案', local: '/icons/chatgpt.png', glyph: 'GPT' },
+    { name: 'ChatGPT', use: '通用推理 / 文案', local: '/icons/chatgpt.jpg', glyph: 'GPT' },
     { name: 'Gemini', use: '长文 / 多模态', slug: 'googlegemini', color: '4796E3', glyph: 'G' },
     { name: 'DeepSeek', use: '深度推理 / 代码', slug: 'deepseek', color: '4D6BFE', glyph: 'DS' },
-    { name: '豆包工作', use: '办公 / Agent', local: '/icons/doubao.png', glyph: '豆' },
+    { name: '豆包工作', use: '办公 / Agent', local: '/icons/doubao.jpg', glyph: '豆' },
     { name: 'Qwen Agent', use: '通义智能体', slug: 'qwen', color: '615CED', glyph: 'QW' },
-    { name: 'WorkBuddy', use: '工作助手', local: '/icons/workbuddy.png', glyph: 'WB' },
+    { name: 'WorkBuddy', use: '工作助手', local: '/icons/workbuddy.jpg', glyph: 'WB' },
   ]},
   { label: '设计', items: [
     { name: 'Photoshop', use: '视觉修图 / 海报', slug: 'adobephotoshop', color: '31A8FF', glyph: 'Ps' },
   ]},
   { label: '协同与知识', items: [
-    { name: '飞书', use: '协同 / 多维表格', local: '/icons/lark.png', glyph: '飞' },
-    { name: 'NotebookLM', use: '笔记 / 知识库', local: '/icons/notebooklm.png', glyph: 'NB' },
+    { name: '飞书', use: '协同 / 多维表格', local: '/icons/lark.jpg', glyph: '飞' },
+    { name: 'NotebookLM', use: '笔记 / 知识库', local: '/icons/notebooklm.jpg', glyph: 'NB' },
     { name: 'Obsidian', use: '个人知识库', slug: 'obsidian', color: '7C3AED', glyph: 'OB' },
   ]},
 ]
