@@ -5,31 +5,36 @@ import { DATA_OPS_ANNOTATIONS } from '../data/content.js'
 
 const SHOTS = [
   {
-    src: 'images/dataops/dashboard.png',
+    src: 'images/dataops/dashboard-1280.webp',
+    full: 'images/dataops/dashboard.webp',
     en: 'DASHBOARD OVERVIEW',
     cn: '账号运营数据看板 · 中台总览',
     note: '作品总数 416 / 9 月发布 57 条 / 总播放 221 万 / 互动 7.9 万',
   },
   {
-    src: 'images/dataops/detail.png',
+    src: 'images/dataops/detail-1280.webp',
+    full: 'images/dataops/detail.webp',
     en: 'WORKS DETAIL TABLE',
     cn: '作品数据明细表 · 全量作品台账',
     note: '444 条记录 · 播放 / 点赞 / 评论 / 收藏 / 转发 / 互动全字段',
   },
   {
-    src: 'images/dataops/project.png',
+    src: 'images/dataops/project-1280.webp',
+    full: 'images/dataops/project.webp',
     en: 'PROJECT TRACKER',
     cn: '助力项目数据表 · 商单进度跟踪',
     note: '13 条项目 · KVL 发布量 vs 团队执行量双口径',
   },
   {
-    src: 'images/dataops/account.png',
+    src: 'images/dataops/account-1280.webp',
+    full: 'images/dataops/account.webp',
     en: 'ACCOUNT CONFIG & TARGET',
     cn: '账号配置表及月目标 · 达标监控',
     note: '6 账号 · 含 v 量 / 达标状态 / 播放互动环比',
   },
   {
-    src: 'images/dataops/archive.png',
+    src: 'images/dataops/archive-1280.webp',
+    full: 'images/dataops/archive.webp',
     en: 'MONTHLY ARCHIVE',
     cn: '账号月度验收存档 · 数据留存',
     note: '24 条月度存档 · 月末粉丝 / 截图证据链',
@@ -73,7 +78,8 @@ export default function DataOps() {
                     className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-300 ${
                       i === idx ? 'opacity-100' : 'opacity-0'
                     }`}
-                    loading="lazy"
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={i === 0 ? 'high' : 'auto'}
                   />
                 ))}
                 {/* 边角极淡晕染：只柔和过渡，不压暗 */}
@@ -217,7 +223,7 @@ export default function DataOps() {
           onClick={() => setZoom(false)}
         >
           <img
-            src={shot.src}
+            src={shot.full}
             alt={shot.cn}
             className="max-h-full max-w-full object-contain rounded-lg shadow-2xl"
           />

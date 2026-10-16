@@ -12,37 +12,37 @@ import {
 
 const GEO_TEST_SHOTS = [
   {
-    src: 'images/geo/geo-doubao-q1.png',
+    src: 'images/geo/geo-doubao-q1.webp',
     en: 'DOUBAO · Q1',
     cn: '豆包 · 短视频 / 种草引用',
     note: '参考 27 篇 · 抖音小红书式带话题内容',
   },
   {
-    src: 'images/geo/geo-kimi-refs.png',
+    src: 'images/geo/geo-kimi-refs.webp',
     en: 'KIMI · Q1',
     cn: 'Kimi · 通用网页内联引用',
     note: '搜索 49 结果 · 厂商官网 / 门户 / 评测混合',
   },
   {
-    src: 'images/geo/geo-deepseek-deep.png',
+    src: 'images/geo/geo-deepseek-deep.webp',
     en: 'DEEPSEEK · DEEP Q3',
     cn: 'DeepSeek · 深度思考补测',
     note: '搜索放大至 109 网页 · 引用密度最高',
   },
   {
-    src: 'images/geo/geo-wenxin-refs.png',
+    src: 'images/geo/geo-wenxin-refs.webp',
     en: 'WENXIN · Q1',
     cn: '文心一言 · 百家号生态',
     note: '引用 30 条 · 混入 SEO 站群域名',
   },
   {
-    src: 'images/geo/geo-yuanbao-refs.png',
+    src: 'images/geo/geo-yuanbao-refs.webp',
     en: 'YUANBAO · Q1',
     cn: '腾讯元宝 · 垂直参数库',
     note: '引用来源（50）面板 · 中关村在线 / 太平洋',
   },
   {
-    src: 'images/geo/geo-qianwen-q2.png',
+    src: 'images/geo/geo-qianwen-q2.webp',
     en: 'QWEN · Q2',
     cn: '通义千问 · 短视频博主来源',
     note: 'B站 / 抖音博主视频占比约八成',

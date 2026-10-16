@@ -7,7 +7,7 @@ export default function Hero() {
       {/* 暗色工作台氛围图 */}
       <div className="absolute inset-0">
         <img
-          src="/hero-workbench.jpg"
+          src={import.meta.env.BASE_URL + 'hero-workbench.webp'}
           alt="暗色多屏数据看板工作台氛围图"
           className="h-full w-full object-cover object-center opacity-55"
           loading="eager"

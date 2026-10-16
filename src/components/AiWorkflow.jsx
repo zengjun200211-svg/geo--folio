@@ -5,22 +5,22 @@ import BounceCards from './BounceCards.jsx'
 import { AI_TOOLS } from '../data/content.js'
 
 const LABELS = {
-  'images/agent/chatgpt.png': 'ChatGPT',
-  'images/agent/gemini.png': 'Gemini',
-  'images/agent/deepseek.png': 'DeepSeek',
-  'images/agent/qwen.png': '千问 Agent',
-  'images/agent/doubao.png': '豆包工作',
-  'images/agent/workbuddy-1.png': 'WorkBuddy',
-  'images/agent/todo.png': '项目待办工作台',
-  'images/agent/zhongtai.png': '数据中台',
-  'images/agent/zhongtai-2.png': '数据看板',
-  'images/knowledge/obsidian-1.png': 'Obsidian 笔记',
-  'images/knowledge/obsidian-2.png': 'Obsidian MOC',
-  'images/knowledge/github-1.png': 'GitHub 仓库',
-  'images/knowledge/github-2.png': 'GitHub 提交',
-  'images/agent/notebooklm-1.png': 'NotebookLM',
-  'images/knowledge/notebooklm-detail.png': 'NotebookLM 复盘',
-  'images/agent/vibe-coding.png': 'Vibe Coding',
+  'images/agent/chatgpt.webp': 'ChatGPT',
+  'images/agent/gemini.webp': 'Gemini',
+  'images/agent/deepseek.webp': 'DeepSeek',
+  'images/agent/qwen.webp': '千问 Agent',
+  'images/agent/doubao.webp': '豆包工作',
+  'images/agent/workbuddy-1.webp': 'WorkBuddy',
+  'images/agent/todo.webp': '项目待办工作台',
+  'images/agent/zhongtai.webp': '数据中台',
+  'images/agent/zhongtai-2.webp': '数据看板',
+  'images/knowledge/obsidian-1.webp': 'Obsidian 笔记',
+  'images/knowledge/obsidian-2.webp': 'Obsidian MOC',
+  'images/knowledge/github-1.webp': 'GitHub 仓库',
+  'images/knowledge/github-2.webp': 'GitHub 提交',
+  'images/agent/notebooklm-1.webp': 'NotebookLM',
+  'images/knowledge/notebooklm-detail.webp': 'NotebookLM 复盘',
+  'images/agent/vibe-coding.webp': 'Vibe Coding',
 }
 
 export default function AiWorkflow() {
