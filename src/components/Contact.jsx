@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { CONTACT_ROWS, FAQ, SITE } from '../data/content.js'
 
 export default function Contact() {
-  const [openFaq, setOpenFaq] = useState(0)
+  const [openFaq, setOpenFaq] = useState(-1)
   const [toast, setToast] = useState('')
 
   const copyWechat = async () => {

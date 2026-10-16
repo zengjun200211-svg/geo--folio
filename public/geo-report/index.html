@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEO · 六平台 3C 数码问答测试报告</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F1420'/%3E%3Cpath d='M8 22V10h4l4 7 4-7h4v12h-4v-6l-4 6-4-6v6z' fill='%23F5A623'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0F1420; --surface:#161D2C; --surface2:#1C2436; --line:#273349;
+    --text:#E8ECF4; --muted:#93A0B8; --accent:#F5A623; --accent2:#4FC3F7;
+    --green:#7ED4A6; --red:#F27C7C; --purple:#B39DFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.7;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  /* ===== Hero ===== */
+  .hero{padding:72px 0 48px;border-bottom:1px solid var(--line);position:relative}
+  .hero .kicker{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:13px;letter-spacing:.18em;font-weight:600;margin-bottom:18px}
+  .hero h1{font-size:clamp(28px,4.6vw,46px);line-height:1.25;font-weight:800;letter-spacing:.01em}
+  .hero h1 em{color:var(--accent);font-style:normal}
+  .hero .sub{margin-top:16px;color:var(--muted);font-size:15px;max-width:720px}
+  .statrow{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;min-width:150px}
+  .stat b{font-size:26px;color:var(--accent2);font-weight:800;display:block}
+  .stat span{font-size:12.5px;color:var(--muted)}
+  /* ===== Section ===== */
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+  .sec-title{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+  .sec-title .no{color:var(--accent);font-weight:800;font-size:18px;letter-spacing:.05em}
+  .sec-title h2{font-size:24px;font-weight:800}
+  .sec-desc{color:var(--muted);font-size:14px;margin-bottom:24px;max-width:780px}
+  /* ===== Cards ===== */
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .card h3{font-size:15.5px;font-weight:700;margin-bottom:8px}
+  .card p{font-size:13.5px;color:var(--muted)}
+  /* ===== Platform ===== */
+  .platform{border:1px solid var(--line);border-radius:16px;background:var(--surface);margin:18px 0;overflow:hidden}
+  .platform .ph{padding:20px 24px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .platform .logo{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#0F1420;flex-shrink:0}
+  .platform .ph h3{font-size:19px;font-weight:800}
+  .platform .ph .tag{font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .platform .ph .tag.hot{color:var(--green);border-color:var(--green)}
+  .platform .pb{padding:20px 24px}
+  .qa{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+  .qa .q{font-weight:700;font-size:13.5px;color:var(--accent2);margin-bottom:6px}
+  .qa .a{font-size:13.5px;color:var(--text);white-space:pre-line}
+  .shots{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 10px}
+  .shots figure{flex:0 0 auto;width:200px;background:var(--surface2);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .shots img{width:100%;display:block;border-bottom:1px solid var(--line)}
+  .shots figcaption{padding:7px 9px;font-size:11.5px;color:var(--muted)}
+  .refbox{margin-top:12px;background:#121826;border:1px dashed var(--line);border-radius:10px;padding:13px 16px;font-size:13px}
+  .refbox .rl{color:var(--accent);font-weight:700;margin-bottom:6px;font-size:13px}
+  .refbox ul{padding-left:18px;color:var(--muted)}
+  .refbox li{margin:3px 0;font-size:12.5px}
+  /* ===== Table ===== */
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--accent2);font-weight:700;background:var(--surface2)}
+  td{color:var(--text)}
+  .tblwrap{overflow-x:auto}
+  /* ===== Charts ===== */
+  .chart{width:100%;height:360px;margin:12px 0}
+  .chart.sm{height:280px}
+  /* ===== Insight ===== */
+  .insight{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:16px 18px;margin:12px 0}
+  .insight .n{color:var(--accent);font-weight:800;font-size:18px;flex-shrink:0}
+  .insight b{color:var(--text)}
+  .insight p{color:var(--muted);font-size:13.5px;margin-top:4px}
+  /* ===== Footer ===== */
+  footer{padding:36px 0 60px;color:var(--muted);font-size:12.5px}
+  footer .line{width:100%;height:1px;background:var(--line);margin-bottom:20px}
+  .badge{display:inline-block;background:var(--accent);color:#0F1420;font-weight:800;border-radius:6px;padding:2px 8px;font-size:12px;margin-right:6px}
+  a{color:var(--accent2)}
+  @media (max-width:700px){
+    .grid2,.grid3{grid-template-columns:1fr}
+    .stat{min-width:calc(50% - 7px)}
+    .chart{height:300px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 视图：Hero ===== -->
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">GEO 对照实验 · 2026-10-14 · 中国</div>
+    <h1>六大 AI 平台 3C 数码问答 <em>GEO 测试报告</em></h1>
+    <p class="sub">同一组 3C 数码问题，逐一问遍豆包（对话版）、Kimi、DeepSeek、文心一言、元宝、通义千问，控制变量记录回答全文、引用来源与页面截图，解析各平台在引用媒体偏好、内容形态与结构化输出上的差异，为内容在各平台被 AI 引用提供策略参考。</p>
+    <div class="statrow">
+      <div class="stat"><b>6</b><span>被测 AI 平台</span></div>
+      <div class="stat"><b>18</b><span>快速思考有效回答</span></div>
+      <div class="stat"><b>3</b><span>DeepSeek 深度思考补测</span></div>
+      <div class="stat"><b>25+</b><span>留存截图 / 全文档案</span></div>
+      <div class="stat"><b>3</b><span>控制变量测试问题</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 视图：实验设计 ===== -->
+<section id="design">
+  <div class="wrap">
+    <div class="sec-title"><span class="no">01</span><h2>实验设计</h2></div>
+    <p class="sec-desc">以 GEO（生成式引擎优化）视角设计对照实验：固定问题、固定顺序、固定模式，逐平台提问，全程留存。</p>
+    <div class="grid2">
+      <div class="card"><h3>目的</h3><p>观察不同 AI 平台在回答 3C 数码选购问题时，分别会引用哪些媒体/内容来源、倾向于长文还是短视频、偏好何种结构化输出，为品牌与内容运营提供可执行的 GEO 优化依据。</p></div>
+      <div class="card"><h3>控制变量</h3><p>同一问题原文、同一时间窗口（2026-10-14）、同一登录账号、同一提问顺序（Q1→Q2→Q3）；快速思考模式为主，深度思考仅在免费可用时补测（DeepSeek）。</p></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>测试问题（逐平台原文发送）</h3>
+      <div class="qa" style="background:var(--surface2)"><div class="q">Q1 · 手机选购</div><div class="a">2026年预算5000元以内，最值得买的安卓旗舰手机是哪几款？请对比处理器、影像和续航，并说明推荐理由。</div></div>
+      <div class="qa" style="background:var(--surface2)"><div class="q">Q2 · 芯片对比</div><div class="a">骁龙8至尊版（Snapdragon 8 Elite）和天玑9400这两款芯片的实际性能差距有多大？在游戏帧率和日常续航上谁更有优势？</div></div>
+      <div class="qa" style="background:var(--surface2)"><div class="q">Q3 · 端侧 AI</div><div class="a">2026年的AI手机有哪些端侧大模型实用功能值得购买？目前哪家手机厂商的端侧AI体验最好？</div></div>
+    </div>
+    <div class="tblwrap" style="margin-top:16px">
+      <table>
+        <tr><th>平台</th><th>测试模式</th><th>深度思考可用性</th><th>本次执行</th></tr>
+        <tr><td>豆包（对话版）</td><td>快速回答（默认）</td><td>深度思考需会员</td><td>快速 × 3 题</td></tr>
+        <tr><td>Kimi</td><td>快速 / 进阶</td><td>进阶触发会员优先队列提示</td><td>快速 × 3 题</td></tr>
+        <tr><td>DeepSeek</td><td>快速 + 智能搜索 / 深度思考</td><td>深度思考免费可用</td><td>快速 × 3 题 + 深度 × 3 题</td></tr>
+        <tr><td>文心一言</td><td>快速（联网搜索）</td><td>深度思考未开放免费入口</td><td>快速 × 3 题</td></tr>
+        <tr><td>腾讯元宝</td><td>快速回答</td><td>深度研究未开放免费入口</td><td>快速 × 3 题</td></tr>
+        <tr><td>通义千问</td><td>快速 / 思考研究</td><td>思考研究切换未生效（疑似需会员）</td><td>快速 × 3 题</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 视图：六平台快速思考 ===== -->
+<section id="platforms">
+  <div class="wrap">
+    <div class="sec-title"><span class="no">02</span><h2>六平台快速思考 · 回答与引用实录</h2></div>
+    <p class="sec-desc">以下为 2026-10-14 当天逐平台提问的留存：每题含回答要点、页面截图与引用来源分析。完整全文与全部截图见实验档案目录 <code>captures/</code>。</p>
+
+    <!-- 豆包 -->
+    <div class="platform">
+      <div class="ph">
+        <div class="logo" style="background:#7C5CFF">豆</div>
+        <h3>豆包（对话版）</h3>
+        <span class="tag">快速回答</span><span class="tag hot">引用：短视频 / 图文营销帖</span>
+      </div>
+      <div class="pb">
+        <div class="qa"><div class="q">Q1 · 5000元安卓旗舰</div><div class="a">结构 = 一句话总纲 + 对比表 + 分机型点评 + 选购结论 + 追问建议。联网检索并展示引用（参考 27 篇，覆盖 5 个搜索关键词）。</div></div>
+        <div class="qa"><div class="q">Q2 · 骁龙8至尊版 vs 天玑9400</div><div class="a">检索 18 篇资料后作答，同样以总纲 + 对比 + 分点结论组织。</div></div>
+        <div class="qa"><div class="q">Q3 · 端侧 AI 手机</div><div class="a">检索 24 篇资料作答，结论 + 功能拆解 + 厂商点评结构。</div></div>
+        <div class="shots">
+          <figure><img src="assets/doubao_doubao_q1_quick_1.png" alt="豆包Q1回答"><figcaption>豆包 Q1 回答首屏</figcaption></figure>
+          <figure><img src="assets/doubao_doubao_q1_quick_refs2.png" alt="豆包Q1引用面板"><figcaption>豆包 Q1 引用面板（27 篇）</figcaption></figure>
+          <figure><img src="assets/doubao_doubao_q2_quick_1.png" alt="豆包Q2回答"><figcaption>豆包 Q2 回答</figcaption></figure>
+          <figure><img src="assets/doubao_doubao_q3_quick_1.png" alt="豆包Q3回答"><figcaption>豆包 Q3 回答</figcaption></figure>
+        </div>
+        <div class="refbox">
+          <div class="rl">引用来源特征</div>
+          <ul>
+            <li>引用条目呈“短视频 / 图文种草”形态：口语化带货标题、带 #话题标签（如“2026五一换机闭眼冲，三款3000档神机 #手机 #数码科技”），明显偏向抖音、小红书式短内容。</li>
+            <li>回答不展示来源站名/域名，只给“参考 N 篇资料”计数与检索关键词。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kimi -->
+    <div class="platform">
+      <div class="ph">
+        <div class="logo" style="background:#FF6B6B">K</div>
+        <h3>Kimi（月之暗面）</h3>
+        <span class="tag">快速 · K3</span><span class="tag hot">引用：通用网页搜索（内联编号）</span>
+      </div>
+      <div class="pb">
+        <div class="qa"><div class="q">Q1 · 5000元安卓旗舰</div><div class="a">显示“搜索网页（49 个结果）”，正文用 web_search:1#N 编号内联引用，标注“使用 2 个工具”。结构 = 结论 + 表格 + 分维度论证 + 引用。</div></div>
+        <div class="qa"><div class="q">Q2 · 骁龙8至尊版 vs 天玑9400</div><div class="a">“使用 1 个工具”，编号内联引用网页结果。</div></div>
+        <div class="qa"><div class="q">Q3 · 端侧 AI 手机</div><div class="a">同类结构，结论先行 + 分节论证。</div></div>
+        <div class="shots">
+          <figure><img src="assets/kimi_kimi_q1_quick_2.png" alt="Kimi Q1回答"><figcaption>Kimi Q1 回答中段</figcaption></figure>
+          <figure><img src="assets/kimi_kimi_q1_quick_refs.png" alt="Kimi Q1引用"><figcaption>Kimi Q1 回答底部 + 引用</figcaption></figure>
+          <figure><img src="assets/kimi_kimi_q2_quick_1.png" alt="Kimi Q2回答"><figcaption>Kimi Q2 回答</figcaption></figure>
+          <figure><img src="assets/kimi_kimi_q3_quick_1.png" alt="Kimi Q3回答"><figcaption>Kimi Q3 回答</figcaption></figure>
+        </div>
+        <div class="refbox">
+          <div class="rl">引用来源特征</div>
+          <ul>
+            <li>依赖通用网页搜索，引用混合厂商官网、门户资讯、专业评测等，无单一媒体倾斜。</li>
+            <li>引用以“网页”为单位呈现，标注搜索命中数（49 / 15 等），透明度较高。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DeepSeek -->
+    <div class="platform">
+      <div class="ph">
+        <div class="logo" style="background:#6EE7F9">D</div>
+        <h3>DeepSeek</h3>
+        <span class="tag">快速 + 智能搜索</span><span class="tag hot">引用：网页搜索编号引用</span>
+      </div>
+      <div class="pb">
+        <div class="qa"><div class="q">Q1 · 5000元安卓旗舰</div><div class="a">开启智能搜索（未开深度思考），底部“搜索到 15 个网页”，正文带 -N 编号引用。结构 = 结论先行 + 分节（游戏/续航/建议）+ 总结。</div></div>
+        <div class="qa"><div class="q">Q2 · 骁龙8至尊版 vs 天玑9400</div><div class="a">同样 15 个网页、编号引用，分维度对比后给选购建议。</div></div>
+        <div class="qa"><div class="q">Q3 · 端侧 AI 手机</div><div class="a">编号引用 + 分节论证，结尾追问引导。</div></div>
+        <div class="shots">
+          <figure><img src="assets/deepseek_deepseek_q1_quick_1.png" alt="DeepSeek Q1回答"><figcaption>DeepSeek Q1 回答</figcaption></figure>
+          <figure><img src="assets/deepseek_deepseek_q1_quick_refs.png" alt="DeepSeek Q1引用"><figcaption>DeepSeek Q1 回答 + 编号引用</figcaption></figure>
+          <figure><img src="assets/deepseek_deepseek_q2_quick_1.png" alt="DeepSeek Q2回答"><figcaption>DeepSeek Q2 回答</figcaption></figure>
+          <figure><img src="assets/deepseek_deepseek_q3_quick_1.png" alt="DeepSeek Q3回答"><figcaption>DeepSeek Q3 回答</figcaption></figure>
+        </div>
+        <div class="refbox">
+          <div class="rl">引用来源特征</div>
+          <ul>
+            <li>网页搜索混合引用，底部明确计数“搜索到 N 个网页”，正文用编号对应来源。</li>
+            <li>来源无平台级倾斜，偏传统网页内容生态。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 文心 -->
+    <div class="platform">
+      <div class="ph">
+        <div class="logo" style="background:#4E8EF7">文</div>
+        <h3>文心一言（百度）</h3>
+        <span class="tag">快速 · 联网搜索</span><span class="tag hot">引用：百家号 + 百度生态 + 站群域名</span>
+      </div>
+      <div class="pb">
+        <div class="qa"><div class="q">Q1 · 5000元安卓旗舰</div><div class="a">结论 + 核心参数横向对比表 + 按需求分点推荐。回答尾部列出完整引用标题与来源，引用 30 条。</div></div>
+        <div class="qa"><div class="q">Q2 · 骁龙8至尊版 vs 天玑9400</div><div class="a">分节对比（核心性能差距 / 游戏帧率 / 日常续航 / 最终选购建议），引用含品玩、搜狐新闻、百家号等。</div></div>
+        <div class="qa"><div class="q">Q3 · 端侧 AI 手机</div><div class="a">结论 + 功能拆解 + 主流厂商对比（荣耀 / 华为 / OPPO / 小米）。</div></div>
+        <div class="shots">
+          <figure><img src="assets/wenxin_wenxin_q1_quick_1.png" alt="文心 Q1回答"><figcaption>文心 Q1 回答 + 对比表</figcaption></figure>
+          <figure><img src="assets/wenxin_wenxin_q1_quick_refs.png" alt="文心 Q1引用"><figcaption>文心 Q1 引用列表（百家号为主）</figcaption></figure>
+          <figure><img src="assets/wenxin_wenxin_q2_quick_5.png" alt="文心 Q2回答"><figcaption>文心 Q2 回答</figcaption></figure>
+          <figure><img src="assets/wenxin_wenxin_q3_quick_1.png" alt="文心 Q3回答"><figcaption>文心 Q3 回答</figcaption></figure>
+        </div>
+        <div class="refbox">
+          <div class="rl">引用来源特征</div>
+          <ul>
+            <li>引用高度集中于百度自家生态：百家号占绝对多数，另有 IT之家、品玩、搜狐新闻、新浪新闻。</li>
+            <li>混入一批疑似 SEO 站群域名（h5.article.xxx.cn / wap.article.xxx.cn / 3g.article.shengweitx.com 等约 10 个），内容农场特征明显。</li>
+            <li>回答尾部附 OPPO 商城 / 京东自营价格卡（电商导流痕迹）。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 元宝 -->
+    <div class="platform">
+      <div class="ph">
+        <div class="logo" style="background:#33C6B2">元</div>
+        <h3>腾讯元宝</h3>
+        <span class="tag">快速回答</span><span class="tag hot">引用：中关村在线 + 太平洋科技</span>
+      </div>
+      <div class="pb">
+        <div class="qa"><div class="q">Q1 · 5000元安卓旗舰</div><div class="a">先说结论 + 避坑提醒 + 对比表 + 按人推荐 + 买前提醒。状态条显示“已处理/已思考 N 次、搜索 M 次资料”。点“源”展开“引用来源（50）”面板。</div></div>
+        <div class="qa"><div class="q">Q2 · 骁龙8至尊版 vs 天玑9400</div><div class="a">引用 Android Authority、极客湾、电脑王阿达等实测数据，先厘清芯片代际再对比。</div></div>
+        <div class="qa"><div class="q">Q3 · 端侧 AI 手机</div><div class="a">功能实测表格 + 各厂商端侧模型对比（华为/荣耀/OPPO/vivo/小米/努比亚×豆包），引用中国电信研究院 AITMark、CNMO。</div></div>
+        <div class="shots">
+          <figure><img src="assets/yuanbao_yuanbao_q1_quick_1.png" alt="元宝 Q1回答"><figcaption>元宝 Q1 回答全文</figcaption></figure>
+          <figure><img src="assets/yuanbao_yuanbao_q1_quick_refs2.png" alt="元宝 Q1引用"><figcaption>元宝 Q1 引用来源（50）面板</figcaption></figure>
+          <figure><img src="assets/yuanbao_yuanbao_q2_quick_1.png" alt="元宝 Q2回答"><figcaption>元宝 Q2 回答</figcaption></figure>
+          <figure><img src="assets/yuanbao_yuanbao_q3_quick_1.png" alt="元宝 Q3回答"><figcaption>元宝 Q3 回答</figcaption></figure>
+        </div>
+        <div class="refbox">
+          <div class="rl">引用来源特征</div>
+          <ul>
+            <li>来源高度集中：中关村在线 + 太平洋科技（电脑数码垂直媒体 / 参数库），通过“商品选购分析工具”插件取数。</li>
+            <li>补充国际评测源（Android Authority）、极客湾、电脑王阿达、中国电信研究院 / CNMO 等第三方权威评测。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 千问 -->
+    <div class="platform">
+      <div class="ph">
+        <div class="logo" style="background:#5B8DEF">千</div>
+        <h3>通义千问（Qwen3.7）</h3>
+        <span class="tag">快速</span><span class="tag hot">引用：短视频博主内容 + 少量网页</span>
+      </div>
+      <div class="pb">
+        <div class="qa"><div class="q">Q1 · 5000元安卓旗舰</div><div class="a">“已完成分析，共参考 14 篇资料”，结论 + 表格 + 按场景推荐。</div></div>
+        <div class="qa"><div class="q">Q2 · 骁龙8至尊版 vs 天玑9400</div><div class="a">参考 9 篇资料，先给结论再分维度论证。</div></div>
+        <div class="qa"><div class="q">Q3 · 端侧 AI 手机</div><div class="a">参考 12 篇资料，厂商对比表 + 按场景选购建议。</div></div>
+        <div class="shots">
+          <figure><img src="assets/qianwen_qianwen_q1_quick_1.png" alt="千问 Q1回答"><figcaption>千问 Q1 回答 + 参考来源</figcaption></figure>
+          <figure><img src="assets/qianwen_qianwen_q2_quick_1.png" alt="千问 Q2回答"><figcaption>千问 Q2 回答（短视频来源）</figcaption></figure>
+          <figure><img src="assets/qianwen_qianwen_q3_quick_1.png" alt="千问 Q3回答"><figcaption>千问 Q3 回答</figcaption></figure>
+        </div>
+        <div class="refbox">
+          <div class="rl">引用来源特征</div>
+          <ul>
+            <li>引用来源以短视频博主内容为主（B站 / 抖音视频标题 + 时长 + 博主名，如“小满聊手机”“极客情报站”“凰家评测”），占比约 80% 以上。</li>
+            <li>少量网页来源：今日头条文章、CSDN 博客、百家号、华为开发者联盟等。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 视图：跨平台对比 ===== -->
+<section id="compare">
+  <div class="wrap">
+    <div class="sec-title"><span class="no">03</span><h2>跨平台对比：引用生态与输出结构</h2></div>
+    <p class="sec-desc">将六平台三题的引用来源与回答结构汇总对比，直观呈现“AI 引用什么内容”的平台差异。</p>
+
+    <div class="card" style="margin-bottom:16px">
+      <h3>各平台引用媒体生态构成（估算占比）</h3>
+      <div class="chart" id="chartEco"></div>
+      <p style="font-size:12.5px;color:var(--muted)">按各平台三题引用来源逐条归类估算：短视频种草 = 抖音/小红书/视频号式带话题内容；UGC 视频 = B站/抖音博主视频；网页文章 = 门户/资讯/博客；百度生态 = 百家号等；垂直数码库 = 中关村在线/太平洋；站群/内容农场 = 可疑 SEO 域名。</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>引用来源媒体矩阵</h3>
+        <div class="tblwrap">
+        <table>
+          <tr><th>平台</th><th>首引用媒体</th><th>其他高频来源</th></tr>
+          <tr><td>豆包</td><td>抖音/小红书式短视频·种草图文</td><td>通用网页（隐藏来源名）</td></tr>
+          <tr><td>Kimi</td><td>通用网页（厂商官网/门户/评测混合）</td><td>资讯门户、专业评测</td></tr>
+          <tr><td>DeepSeek</td><td>通用网页混合</td><td>CNMO、厂商新闻、参数站</td></tr>
+          <tr><td>文心一言</td><td>百家号</td><td>IT之家、品玩、搜狐/新浪、站群域名、电商价格卡</td></tr>
+          <tr><td>腾讯元宝</td><td>中关村在线</td><td>太平洋科技、Android Authority、极客湾、中国电信研究院、CNMO</td></tr>
+          <tr><td>通义千问</td><td>B站/抖音博主视频</td><td>今日头条、CSDN、百家号、华为开发者联盟</td></tr>
+        </table>
+        </div>
+      </div>
+      <div class="card">
+        <h3>结构化输出能力评估（5 分制）</h3>
+        <div class="chart sm" id="chartStruct"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>内容形态与长度偏好</h3>
+      <div class="tblwrap">
+      <table>
+        <tr><th>平台</th><th>引用内容形态</th><th>长 / 短内容</th><th>营销化程度</th></tr>
+        <tr><td>豆包</td><td>短视频、种草图文（带 #话题）</td><td>短内容</td><td>高（带货标题风格）</td></tr>
+        <tr><td>Kimi</td><td>网页文章（官网/评测/资讯）</td><td>中长内容</td><td>低</td></tr>
+        <tr><td>DeepSeek</td><td>网页文章</td><td>中长内容</td><td>低</td></tr>
+        <tr><td>文心一言</td><td>图文文章（百家号长文 + 标题党）</td><td>中长 + 标题党短标题</td><td>高（SEO 站群 + 电商卡片）</td></tr>
+        <tr><td>腾讯元宝</td><td>垂直参数库 + 评测（结构化数据）</td><td>中长</td><td>中（参数库导购）</td></tr>
+        <tr><td>通义千问</td><td>B站/抖音博主视频、视频标题</td><td>短视频（时长 1-15 分钟）</td><td>中（UGC 种草）</td></tr>
+      </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 视图：GEO 洞察 ===== -->
+<section id="insight">
+  <div class="wrap">
+    <div class="sec-title"><span class="no">04</span><h2>GEO 洞察：五个关键发现</h2></div>
+    <p class="sec-desc">把三题 × 六平台的引用行为放在一起看，可得出以下对内容运营有直接意义的结论。</p>
+
+    <div class="insight"><div class="n">01</div><div><b>AI 引用生态 = 厂商内容生态的镜像</b><p>文心首选百家号（百度自家）、元宝首选中关村/太平洋（腾讯投资/数码参数库）、千问首选 B站/抖音博主（UGC 视频）、豆包首选抖音/小红书式种草。做哪个平台的内容，就更可能被哪个平台的 AI 引用。</p></div></div>
+    <div class="insight"><div class="n">02</div><div><b>文章型内容吃香于“中立搜索型”平台</b><p>Kimi、DeepSeek 依赖通用网页搜索，引用相对中立且透明（显示搜索命中数 + 内联编号），结构化的评测长文、参数对比文在这两个平台更易被引用。</p></div></div>
+    <div class="insight"><div class="n">03</div><div><b>短视频在字节系与阿里系 AI 中命中率最高</b><p>千问三题引用中短视频占比约八成，豆包引用为短视频/种草风格。带时长、带博主名、标题信息量足的视频内容天然适配这类 AI 的引用单元。</p></div></div>
+    <div class="insight"><div class="n">04</div><div><b>引用透明度差异显著</b><p>文心、元宝给完整来源列表/面板；Kimi、DeepSeek 给内联编号与计数；豆包只给“参考 N 篇”不列来源。来源可见性会直接影响用户对回答可信度的感知，也会影响“被引用”的收益感。</p></div></div>
+    <div class="insight"><div class="n">05</div><div><b>结构化输出已是所有平台的共识，但“营销化”程度分化</b><p>六平台均采用结论先行 + 表格 + 分点论证；文心（电商价格卡、SEO 站群）与豆包/千问（带货标题）营销痕迹最重，Kimi/DeepSeek 最克制。</p></div></div>
+
+    <div class="card" style="margin-top:20px">
+      <h3>对内容运营的实操建议</h3>
+      <div class="tblwrap">
+      <table>
+        <tr><th>目标平台</th><th>应重点布局的内容形态</th><th>要点</th></tr>
+        <tr><td>被文心引用</td><td>百家号图文长文</td><td>关键词密度、参数完整、标题信息量大；避免纯站群式标题党（会被归为内容农场）</td></tr>
+        <tr><td>被元宝引用</td><td>中关村在线 / 太平洋科技数据页</td><td>结构化参数、价格信息、评测结论，且要与厂商参数库同构</td></tr>
+        <tr><td>被千问引用</td><td>B站 / 抖音数码测评视频</td><td>标题含型号 + 对比 + 结论；时长适中；简介结构化；博主名即品牌</td></tr>
+        <tr><td>被豆包引用</td><td>抖音/小红书种草图文 + 视频</td><td>口语化标题 + #话题标签 + 一图看懂式信息图</td></tr>
+        <tr><td>被 Kimi / DeepSeek 引用</td><td>网站长文（官网/评测站）</td><td>正文结构清晰（H2 分节）、表格化参数、可被编号引用的段落</td></tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 视图：深度思考补测 ===== -->
+<section id="deep">
+  <div class="wrap">
+    <div class="sec-title"><span class="no">05</span><h2>深度思考补测：DeepSeek（免费）</h2></div>
+    <p class="sec-desc">按“深度思考需会员的平台跳过”的规则，仅 DeepSeek 深度思考免费可用，补测三题。Kimi 进阶、千问思考研究触发会员提示 / 切换未生效，未纳入。</p>
+    <div class="platform">
+      <div class="ph">
+        <div class="logo" style="background:#6EE7F9">D</div>
+        <h3>DeepSeek · 深度思考</h3>
+        <span class="tag">已思考 N 秒</span><span class="tag hot">搜索量放大：15 → 109 网页</span>
+      </div>
+      <div class="pb">
+        <div class="qa"><div class="q">Q1 · 5000元安卓旗舰</div><div class="a">显示“已思考（用时 9 秒）”，思考过程可见：先多路搜索（26 个网页）→ 浏览 7 个页面 → 二次搜索（47 个网页）→ 浏览 4 个页面 → 综合成文。引用 CNMO、厂商新闻等。回答覆盖机型更全、论证更充分。</div></div>
+        <div class="qa"><div class="q">Q2 · 骁龙8至尊版 vs 天玑9400</div><div class="a">先厘清“两代前芯片”的时点，分 CPU/GPU/游戏帧率/续航维度对比，给出按需选购结论。</div></div>
+        <div class="qa"><div class="q">Q3 · 端侧 AI 手机</div><div class="a">搜索 109 个网页，引用荣耀 YOYO（Claw，任务准确率 91.8%）、小米超级小爱、华为/努比亚等，按厂商分点对比并给选购建议。</div></div>
+        <div class="shots">
+          <figure><img src="assets/deepseek_deepseek_q1_deep_1.png" alt="DeepSeek深度思考Q1"><figcaption>DeepSeek 深度思考 Q1（已思考 9 秒）</figcaption></figure>
+          <figure><img src="assets/deepseek_deepseek_q3_deep_tail.png" alt="DeepSeek深度思考Q3尾部"><figcaption>DeepSeek 深度思考 Q3 尾部（109 网页）</figcaption></figure>
+        </div>
+        <div class="refbox">
+          <div class="rl">对比快速模式的差异</div>
+          <ul>
+            <li>搜索规模显著放大（15 → 26 → 47 → 109 网页），引用密度更高。</li>
+            <li>思考过程对用户可见，增强可信度；回答结构更完整、覆盖机型/厂商更全。</li>
+            <li>代价：生成时长明显增加（9 秒思考 + 更长输出），适合复杂决策型问题。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 视图：附录 ===== -->
+<section id="appendix">
+  <div class="wrap">
+    <div class="sec-title"><span class="no">06</span><h2>附录：实验档案与说明</h2></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>档案位置</h3>
+        <p>完整留存位于 <code>geo-test/captures/&lt;平台&gt;/</code>：每题含回答全文 .txt 与页面截图 .png（含引用来源面板截图）。本报告为精选摘要版。</p>
+      </div>
+      <div class="card">
+        <h3>方法与边界</h3>
+        <p>2026-10-14 单日单账号执行；快速思考为主；深度思考仅免费平台（DeepSeek）补测。引用占比为按可见引用条目的归类估算，非平台官方口径。回答内容由各 AI 平台生成，可能有误，仅供 GEO 研究参考。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+(function(){
+  // 图表 A：引用媒体生态（堆叠条形）
+  var eco = document.getElementById('chartEco');
+  if (window.echarts && eco) {
+    var c = echarts.init(eco);
+    var cats = ['豆包','Kimi','DeepSeek','文心一言','元宝','千问'];
+    var types = ['短视频/种草','UGC视频(B站/抖音)','网页文章','百度生态(百家号)','垂直数码库','站群/内容农场'];
+    var data = [
+      [65, 10, 15, 0, 0, 10],
+      [5, 10, 80, 0, 5, 0],
+      [0, 5, 90, 0, 5, 0],
+      [0, 5, 5, 70, 0, 20],
+      [0, 10, 5, 0, 80, 5],
+      [10, 70, 15, 5, 0, 0]
+    ];
+    var series = types.map(function(t, i){
+      return {name:t, type:'bar', stack:'eco', barWidth:26, itemStyle:{borderRadius:i===types.length-1?[0,6,6,0]:0}, data:data.map(function(d){return d[i]})};
+    });
+    c.setOption({
+      backgroundColor:'transparent',
+      tooltip:{trigger:'axis', axisPointer:{type:'shadow'}},
+      legend:{textStyle:{color:'#93A0B8', fontSize:11}, bottom:0, itemWidth:12, itemHeight:8},
+      grid:{left:60, right:20, top:20, bottom:42},
+      xAxis:{type:'value', axisLabel:{color:'#93A0B8', fontSize:11, formatter:'{value}%'}, splitLine:{lineStyle:{color:'#1C2436'}}},
+      yAxis:{type:'category', data:cats, axisLabel:{color:'#E8ECF4', fontSize:12}, axisLine:{lineStyle:{color:'#273349'}}, axisTick:{show:false}},
+      color:['#F5A623','#F27C7C','#4FC3F7','#7ED4A6','#B39DFF','#8A93A8'],
+      series:series
+    });
+    window.addEventListener('resize', function(){c.resize()});
+  }
+  // 图表 B：结构化能力雷达
+  var st = document.getElementById('chartStruct');
+  if (window.echarts && st) {
+    var c2 = echarts.init(st);
+    var dims = ['结论先行','对比表格','分点论证','引用可见性','营销克制'];
+    var plats = [
+      {name:'豆包', v:[5,5,5,2,2]},
+      {name:'Kimi', v:[5,4,5,4,4]},
+      {name:'DeepSeek', v:[5,3,5,4,5]},
+      {name:'文心', v:[5,5,5,5,2]},
+      {name:'元宝', v:[5,5,5,5,3]},
+      {name:'千问', v:[5,5,5,4,3]}
+    ];
+    c2.setOption({
+      backgroundColor:'transparent',
+      tooltip:{},
+      legend:{textStyle:{color:'#93A0B8', fontSize:10}, bottom:0, itemWidth:12, itemHeight:8},
+      radar:{indicator:dims.map(function(d){return {name:d, max:5}}), radius:'62%', center:['50%','46%'],
+        axisName:{color:'#93A0B8', fontSize:11}, splitLine:{lineStyle:{color:'#1C2436'}}, splitArea:{areaStyle:{color:['rgba(22,29,44,0.4)','rgba(28,36,54,0.3)']}}},
+      series:[{type:'radar', data:plats.map(function(p){return {name:p.name, value:p.v}})}],
+      color:['#F5A623','#F27C7C','#4FC3F7','#7ED4A6','#B39DFF','#FFFFFF']
+    });
+    window.addEventListener('resize', function(){c2.resize()});
+  }
+})();
+</script>
+</body>
+</html>

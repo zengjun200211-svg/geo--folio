@@ -1,7 +1,7 @@
+import { useState } from 'react'
 import SectionHeader from './SectionHeader.jsx'
 import ViewFrame from './ViewFrame.jsx'
-import AccordionGallery from './AccordionGallery.jsx'
-import FlexCarousel from './FlexCarousel.jsx'
+import BounceCards from './BounceCards.jsx'
 import { AI_TOOLS } from '../data/content.js'
 
 const LABELS = {
@@ -24,6 +24,7 @@ const LABELS = {
 }
 
 export default function AiWorkflow() {
+  const [lightbox, setLightbox] = useState(null)
   return (
     <section id="ai-workflow" className="scroll-mt-16 border-t border-line/60 py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
@@ -54,17 +55,25 @@ export default function AiWorkflow() {
 
               {t.images && t.images.length > 0 ? (
                 <div className="mt-auto pt-4">
-                  <AccordionGallery
-                    items={t.images.map((src) => ({ image: src, label: LABELS[src] || t.name }))}
-                    defaultIndex={0}
-                    height={260}
-                    gap={6}
-                    radius={8}
-                    expandRatio={0.75}
-                    accentColor="#EE211E"
-                    trigger="hover"
-                    grayscale={true}
-                  />
+                  <p className="mono mb-1 text-center text-[8px] tracking-[0.2em] text-mute/60">
+                    点击图片查看原图 →
+                  </p>
+                  <div className="flex justify-center">
+                    <BounceCards
+                    images={t.images.map(src => ({ src, alt: LABELS[src] || t.name }))}
+                    containerWidth={300}
+                    containerHeight={200}
+                    cardSize={170}
+                    spread={55}
+                    rotation={8}
+                    pushDistance={80}
+                    hoverScale={1.12}
+                    borderWidth={2}
+                    borderColor="#EE211E"
+                    radius={12}
+                    onCardClick={(idx) => setLightbox({ src: t.images[idx], alt: LABELS[t.images[idx]] || t.name })}
+                    />
+                  </div>
                 </div>
               ) : (
                 <div className="placeholder-box mt-5 rounded-lg p-4">
@@ -91,6 +100,22 @@ export default function AiWorkflow() {
           </article>
         </div>
       </div>
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-8 cursor-zoom-out"
+          onClick={() => setLightbox(null)}
+        >
+          <img
+            src={lightbox.src}
+            alt={lightbox.alt}
+            className="max-h-full max-w-full object-contain rounded-lg shadow-2xl"
+          />
+          <p className="absolute bottom-6 left-1/2 -translate-x-1/2 mono text-[11px] tracking-[0.2em] text-white/60">
+            {lightbox.alt} · 点击任意处关闭
+          </p>
+        </div>
+      )}
     </section>
   )
 }

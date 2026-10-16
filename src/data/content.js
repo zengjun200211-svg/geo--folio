@@ -44,6 +44,7 @@ export const INDEX_CARDS = [
     en: ['CONTENT', 'HITS'],
     cn: '爆款内容与方法论',
     tone: 'red',
+    thumb: 'images/hits/h-01-01.jpg',
     thumbEn: 'VIDEO COVERS × 3-8',
     thumbCn: '爆款视频封面拼贴',
     foot: 'SHORT VIDEO / HOOK',
@@ -54,6 +55,7 @@ export const INDEX_CARDS = [
     en: ['COMMERCIAL', 'PROJECTS'],
     cn: '商单项目与多平台分发',
     tone: 'paper',
+    thumb: 'images/commercial/liyuanyu-1.png',
     thumbEn: 'SHUANGYU × 15TH GAMES',
     thumbCn: '双鱼体育 × 十五运',
     foot: 'BRIEF / DELIVERY',
@@ -163,10 +165,15 @@ const v = (code, account, cover, title, link) => ({
 })
 
 export const HIT_GROUPS = {
-  own: [],
+  own: [
+    v('H-36', '自有账号', 'images/hits/h-01-01.jpg', '自有爆款 01'),
+    v('H-37', '自有账号', 'images/hits/h-02-01.jpg', '自有爆款 02'),
+    v('H-38', '自有账号', 'images/hits/h-03-01.jpg', '自有爆款 03'),
+    v('H-39', '自有账号', 'images/hits/h-06-01.jpg', '自有爆款 04'),
+  ],
   managed: [
     // 回声屏幕所（6条）
-    v('H-01', '回声屏幕所', 'images/hits/h-01-01.jpg', 'vivo X500 屏幕开箱'),
+    { ...v('H-01', '回声屏幕所', 'images/hits/h-01-01.jpg', 'vivo X500 屏幕开箱', 'https://v.douyin.com/R6B3fbkzkss/'), date:'2026-09-10', likes:12000, comments:141, collects:137, shares:308, follows:2130, role:'审核、跟拍、发布内容' },
     v('H-02', '回声屏幕所', 'images/hits/h-01-02.jpg', 'vivo X500 屏幕测试'),
     v('H-03', '回声屏幕所', 'images/hits/h-01-03.jpg', 'vivo X Fold6 屏幕测试'),
     v('H-04', '回声屏幕所', 'images/hits/h-01-04.jpg', '屏幕之王爆款'),
@@ -222,7 +229,7 @@ export const COMMERCIAL_CASES = [
       '百家号、今日头条、搜狐、网易、公众号的体育内容发布',
       '里程碑倒排、多方统筹',
     ],
-    result: null,
+    result: '发布 275 篇，累计阅读 10w+，互动 1000+',
     geoNote:
       '飞书多维表格 + AI Agent 搭部门级数据中台：自动监控、异常预警、定期复盘；推动 AIGC 内容生产线落地为 SOP',
     sources: ['百家号', '今日头条', '搜狐', '网易', '公众号'],
@@ -312,22 +319,73 @@ export const AI_TOOLS = [
 
 // ---------- 05 DATA OPS ----------
 export const DATA_OPS_ANNOTATIONS = [
-  ['监控什么指标', null],
-  ['数据怎么自动汇总', null],
-  ['异常怎么预警', null],
-  ['复盘报告怎么自动出', null],
+  [
+    '监控什么指标',
+    '作品总数 416、9 月发布 57 条、9 月总播放 221 万、9 月互动总量 7.9 万、商业团队执行 33 条（2026-09 口径）；按账号、按月度双维度跟踪播放量与互动量趋势，并用 v 量类型分布（主含 / 轻含 / 未含）判断内容结构健康度。',
+  ],
+  [
+    '数据怎么自动汇总',
+    '从「作品数据明细表」「账号配置表及月目标」自动聚合到看板，播放量、互动量按账号 × 月度实时汇总，替代手工拉 Excel 拼表，打开仪表盘即出全局结果。',
+  ],
+  [
+    '异常怎么预警',
+    '账号月度验收存档 + 助力项目执行数据表联动，对断更、低播放、目标差异率做监控标记；本月 33 条商业执行进度逐条可见，未达标自动亮出，不用等人汇报。',
+  ],
+  [
+    '复盘报告怎么自动出',
+    '月度验收存档按账号自动沉淀，周报 / 月报直接取看板数据生成，复盘结论从「临时翻数据」变成「打开即见」，每次复盘省 1 小时以上手工整理。',
+  ],
 ]
 
 // ---------- 06 GEO LAB ----------
 export const GEO_STEPS = ['诊断', '规划', '内容', '分发', '监测', '复盘']
 export const GEO_EN_STEPS = ['DIAGNOSE', 'PLAN', 'CONTENT', 'DISTRIBUTE', 'MONITOR', 'REVIEW']
-export const GEO_LIBS = ['问题库', '事实库', '内容库', '信源库', '监测库']
+export const GEO_STEP_DEFS = {
+  诊断: '测 AI 怎么看这个品牌，看竞品、找缺口',
+  规划: '建问题库、排优先级、统一品牌信息',
+  内容: '先给结论、结构化、带数据、FAQ',
+  分发: '按平台偏好，铺知乎 / 百家号 / 第三方背书',
+  监测: '固定问题库，分平台跑题，记提及率',
+  复盘: '定位归因，调整验证，形成闭环',
+}
+export const GEO_LIBS = [
+  {
+    cn: '问题库',
+    en: 'QUESTION',
+    def: '用户到底怎么问',
+    tags: '场景词 · 决策词 · 长尾词 · 联想词',
+  },
+  {
+    cn: '事实库',
+    en: 'FACTS',
+    def: '品牌有什么可说可证',
+    tags: '产品 · 案例 · 资质 · 每句话有据可查',
+  },
+  {
+    cn: '内容库',
+    en: 'CONTENT',
+    def: '用什么承接问题',
+    tags: '官网 · FAQ · 对比 · 案例 · 白皮书',
+  },
+  {
+    cn: '信源库',
+    en: 'SOURCES',
+    def: 'AI 从哪里相信你',
+    tags: '官网 · 媒体 · 平台 · 第三方口碑',
+  },
+  {
+    cn: '监测库',
+    en: 'MONITOR',
+    def: '优化有没有效果',
+    tags: 'AI 答案记录 · 竞品 · 错误事实',
+  },
+]
 export const GEO_METRICS = [
-  ['提及率', 'MENTION RATE'],
-  ['首推率', 'TOP RECOMMEND RATE'],
-  ['引用来源分布', 'CITATION SOURCES'],
-  ['情感倾向', 'SENTIMENT'],
-  ['可见度占比', 'VISIBILITY SHARE'],
+  { cn: '提及率', en: 'MENTION RATE', def: '问 100 个问题，AI 提到你几次', rel: '有没有被看见' },
+  { cn: '首推率', en: 'TOP RECOMMEND RATE', def: '提到你时，排在第几位', rel: '被推荐的深度' },
+  { cn: '引用来源', en: 'CITATION SOURCES', def: 'AI 引用你哪篇、哪家媒体', rel: '信源是否有效' },
+  { cn: '情感倾向', en: 'SENTIMENT', def: 'AI 说你好话还是坏话', rel: '口碑是否正向' },
+  { cn: '可见度占比', en: 'VISIBILITY SHARE', def: '同主题 AI 回答中品牌的出现份额', rel: '整体可见度' },
 ]
 export const GEO_STANCE =
   'GEO 不是写文章，是建设一套 AI 愿意采用、用户愿意相信、业务能承接的知识资产。'

@@ -42,11 +42,19 @@ function HitCard({ item, selected, onSelect }) {
           <span className="mono text-[9px] tracking-[0.1em] text-white/90">{item.code}</span>
         </div>
         {/* 播放按钮 */}
-        <div className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/30">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
+        {item.link && (
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-all duration-300 hover:bg-white/40"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </a>
+        )}
       </div>
       {/* 信息区 */}
       <div className="border-t border-line p-3.5">
@@ -76,7 +84,7 @@ export default function ContentHits() {
 
   const allItems = HIT_GROUPS[tab]
   const items = account ? allItems.filter((it) => it.account === account) : allItems
-  const current = items[sel[tab]] ?? items[0]
+  const current = items[sel[tab]] ?? items[0] ?? null
 
   // 所有账号列表
   const accountList = useMemo(() => {
@@ -238,6 +246,8 @@ export default function ContentHits() {
           </div>
 
           <aside className="h-fit max-h-[calc(100vh-6rem)] overflow-y-auto rounded-xl border border-line bg-panel p-5 lg:sticky lg:top-24" data-reveal>
+            {current ? (
+            <>
             <div className="mb-4 flex items-center justify-between">
               <span className="mono flex items-center gap-2 text-[10px] tracking-[0.2em] text-brand">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand blink" /> NOW VIEWING
@@ -250,12 +260,12 @@ export default function ContentHits() {
             <div className="mt-3">
               <SpecRow k="平台 / 账号" v={current.account} />
               <SpecRow k="发布时间" v={current.date} />
-              <SpecRow k="播放" v={current.plays} />
               <SpecRow k="点赞" v={current.likes} />
               <SpecRow k="评论" v={current.comments} />
+              <SpecRow k="收藏" v={current.collects} />
+              <SpecRow k="转发" v={current.shares} />
               <SpecRow k="涨粉" v={current.follows} />
               <SpecRow k="我负责的环节" v={current.role} />
-              <SpecRow k="一句话爆点" v={current.hook} />
             </div>
 
             <div className="mt-4">
@@ -273,6 +283,10 @@ export default function ContentHits() {
                 ))}
               </div>
             </div>
+            </>
+            ) : (
+              <p className="cn text-[12px] text-mute">暂无作品</p>
+            )}
           </aside>
         </div>
 

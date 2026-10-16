@@ -44,16 +44,40 @@ function Card({ card, isActive, tone }) {
         {card.cn}
       </p>
       <div
-        className={`placeholder-box mt-4 flex flex-1 flex-col items-center justify-center gap-1.5 rounded-lg p-3 text-center ${
-          paper ? 'dark-on-paper' : ''
+        className={`mt-4 relative flex flex-1 flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl group/thumb ${
+          paper ? 'border border-ink/10' : 'border border-paper/10'
         }`}
+        style={!card.thumb ? {
+          background: 'repeating-linear-gradient(-45deg, rgba(255,255,255,0.025) 0 10px, transparent 10px 20px)',
+          border: '1px dashed rgba(255,255,255,0.16)',
+        } : {}}
       >
-        <span className={`mono text-[9px] tracking-[0.18em] ${paper ? 'text-ink/50' : 'text-paper/80'}`}>
-          {card.thumbEn}
-        </span>
-        <span className={`cn text-[11px] ${paper ? 'text-ink/45' : 'text-paper/65'}`}>
-          {card.thumbCn} · 【待补】
-        </span>
+        {card.thumb ? (
+          <>
+            <img
+              src={card.thumb}
+              alt={card.thumbCn}
+              className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover/thumb:scale-110"
+              loading="lazy"
+            />
+            {/* 渐变遮罩 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            {/* 底部标签浮字 */}
+            <div className="absolute bottom-0 left-0 right-0 p-3">
+              <p className="mono text-[8px] tracking-[0.18em] text-white/70">{card.thumbEn}</p>
+              <p className="cn mt-0.5 text-[11px] font-medium text-white">{card.thumbCn}</p>
+            </div>
+          </>
+        ) : (
+          <>
+            <span className={`mono text-[9px] tracking-[0.18em] ${paper ? 'text-ink/50' : 'text-paper/80'}`}>
+              {card.thumbEn}
+            </span>
+            <span className={`cn text-[11px] ${paper ? 'text-ink/45' : 'text-paper/65'}`}>
+              {card.thumbCn} · 【待补】
+            </span>
+          </>
+        )}
       </div>
       <footer
         className={`mono mt-4 flex items-center justify-between text-[9px] tracking-[0.2em] ${
@@ -121,10 +145,15 @@ export default function IndexSection() {
     setDragging(false)
     setLive(0)
     try { stageRef.current.releasePointerCapture(e.pointerId) } catch {}
+    if (!moved.current) {
+      const card = INDEX_CARDS[activeRef.current]
+      if (card) enter(card.id)
+    }
   }
   const enter = (id) => {
-    if (moved.current) return
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    const el = document.getElementById(id)
+    if (!el) return
+    el.scrollIntoView({ behavior: 'smooth' })
     history.replaceState(null, '', `#${id}`)
   }
   const onKey = (e) => {

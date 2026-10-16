@@ -6,3 +6,6 @@ dist-ssr
 npm-install.log
 .DS_Store
 .vite
+
+.preview/
+pw_debug.png
