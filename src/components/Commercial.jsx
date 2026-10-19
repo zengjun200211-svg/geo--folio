@@ -82,7 +82,9 @@ function CaseDetail({ item }) {
 
       {item.phases && item.phases.length > 0 && (
         <div className="mt-7">
-          <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">CAMPAIGN PHASES / 事件四阶段</p>
+          <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">
+            {item.phasesTitle || 'CAMPAIGN PHASES / 事件四阶段'}
+          </p>
           <div className="grid gap-2 sm:grid-cols-2">
             {item.phases.map((p, i) => (
               <div key={p.name} className="flex gap-3 rounded-md border border-ink/15 bg-white/40 px-3 py-2.5">

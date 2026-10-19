@@ -9,3 +9,5 @@ npm-install.log
 
 .preview/
 pw_debug.png
+tbl*_*.ndjson
+tbl*_*.manifest.json
