@@ -285,7 +285,6 @@ export const COMMERCIAL_CASES = [
     result: '72 篇种草内容 · 总互动量 1.9 万+ · 高互动率占比 18%',
     geoNote: null,
     sources: [],
-    images: ['images/commercial/seeding-iqoo.webp'],
   },
   {
     code: 'B-04',
@@ -301,7 +300,6 @@ export const COMMERCIAL_CASES = [
     result: '320 篇种草内容 · 小红书 + 抖音双平台 · 总互动量 12.8 万+ · 高互动率占比 25%',
     geoNote: null,
     sources: ['小红书', '抖音'],
-    images: ['images/commercial/seeding-s60.webp'],
   },
   {
     code: 'B-05',
@@ -317,7 +315,6 @@ export const COMMERCIAL_CASES = [
     result: '282 篇（图文 162 + 视频 120）· 总阅读量 20.1 万 · 总互动量 5000+',
     geoNote: null,
     sources: [],
-    images: ['images/commercial/seeding-xfold6.webp'],
   },
 ]
 
