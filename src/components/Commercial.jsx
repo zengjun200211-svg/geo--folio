@@ -130,7 +130,7 @@ function CaseDetail({ item }) {
       {item.images && item.images.length >= 3 && (
         <div className="mt-8">
           <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">
-            PUBLISHED ARTICLES / 已发布推文
+            CAMPAIGN VISUALS / 项目视觉素材
           </p>
           <div className="relative h-[480px] rounded-lg bg-black/5">
             <CircularCarousel
@@ -148,14 +148,30 @@ function CaseDetail({ item }) {
         </div>
       )}
 
-      {item.images && item.images.length < 3 && (
+      {item.images && item.images.length === 1 && (
         <div className="mt-8">
           <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">
-            PUBLISHED ARTICLES / 已发布推文
+            CAMPAIGN VISUALS / 项目视觉素材
           </p>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <div className="mx-auto max-w-[300px]">
+            <img
+              src={item.images[0]}
+              alt="项目种草视觉"
+              className="aspect-[3/4] w-full rounded-lg border border-ink/15 object-cover object-top shadow-lg"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      )}
+
+      {item.images && item.images.length === 2 && (
+        <div className="mt-8">
+          <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">
+            CAMPAIGN VISUALS / 项目视觉素材
+          </p>
+          <div className="grid grid-cols-2 gap-3">
             {item.images.map((src) => (
-              <img key={src} src={src} alt="公众号推文封面" className="aspect-[3/4] w-full rounded-md border border-ink/15 object-cover object-top" loading="lazy" />
+              <img key={src} src={src} alt="项目种草视觉" className="aspect-[3/4] w-full rounded-md border border-ink/15 object-cover object-top" loading="lazy" />
             ))}
           </div>
         </div>
