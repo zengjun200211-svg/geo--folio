@@ -27,8 +27,20 @@ function CaseDetail({ item }) {
   }
   return (
     <div className="rounded-lg border border-line bg-paper p-7 text-ink md:p-10">
-      <p className="mono text-[10px] tracking-[0.22em] text-brand">{item.code} · COMMERCIAL CASE</p>
+      <p className="mono text-[10px] tracking-[0.22em] text-brand">
+        {item.code} · COMMERCIAL CASE
+        {item.kind && (
+          <span className="ml-2 rounded-full border border-brand/40 bg-brand/10 px-2.5 py-0.5 text-[10px] font-bold tracking-[0.12em]">
+            FEED SEEDING · {item.kind}
+          </span>
+        )}
+      </p>
       <h3 className="cn mt-3 text-[24px] font-bold leading-snug md:text-[30px]">{item.title}</h3>
+      {item.tagline && (
+        <p className="cn mt-3 inline-block rounded-full border border-brand/40 bg-brand/10 px-4 py-1 text-[13px] font-bold text-brand">
+          {item.tagline}
+        </p>
+      )}
 
       <div className="mt-7 grid gap-7 md:grid-cols-2">
         <div>
@@ -55,21 +67,65 @@ function CaseDetail({ item }) {
         </ul>
       </div>
 
+      {item.win && item.win.length > 0 && (
+        <div className="mt-7">
+          <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">ONE WIN, THREE-WAY VALUE / 三方共赢</p>
+          <div className="grid gap-2 sm:grid-cols-3">
+            {item.win.map((w) => (
+              <div key={w} className="rounded-md border border-ink/20 bg-white/50 px-3 py-2.5 cn text-[12.5px] font-bold text-ink/90">
+                {w}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {item.phases && item.phases.length > 0 && (
+        <div className="mt-7">
+          <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">CAMPAIGN PHASES / 事件四阶段</p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {item.phases.map((p, i) => (
+              <div key={p.name} className="flex gap-3 rounded-md border border-ink/15 bg-white/40 px-3 py-2.5">
+                <span className="mono mt-0.5 text-[12px] font-bold text-brand">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <p className="cn text-[13px] font-bold text-ink">{p.name}</p>
+                  <p className="cn mt-0.5 text-[11.5px] leading-relaxed text-ink/70">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="mt-7">
         <p className="mono mb-3 text-[10px] tracking-[0.2em] text-ink/50">
           DISTRIBUTION CHANNELS / 发布平台
         </p>
-        <div className="flex flex-wrap gap-2">
-          {item.sources.map((s) => (
-            <span
-              key={s}
-              className="cn rounded-full border border-ink/25 px-3 py-1 text-[11px] text-ink/80"
-            >
-              {s}
+        {item.sources && item.sources.length > 0 ? (
+          <div className="flex flex-wrap gap-2">
+            {item.sources.map((s) => (
+              <span
+                key={s}
+                className="cn rounded-full border border-ink/25 px-3 py-1 text-[11px] text-ink/80"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <p className="cn text-[11.5px] text-ink/40">信息流种草分发（平台口径以客户数据为准）</p>
+        )}
+      </div>
+
+      {item.badges && item.badges.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {item.badges.map((b) => (
+            <span key={b} className="cn rounded-full bg-ink px-3 py-1 text-[11px] font-bold text-white">
+              {b}
             </span>
           ))}
         </div>
-      </div>
+      )}
 
       {item.images && item.images.length >= 3 && (
         <div className="mt-8">
@@ -160,6 +216,11 @@ export default function Commercial() {
                   <span className="cn flex-1 text-[13px] font-bold text-text">
                     {c.title || '【待补：其他商单项目】'}
                   </span>
+                  {c.kind && (
+                    <span className="cn shrink-0 rounded-full border border-brand/35 bg-brand/10 px-2 py-0.5 text-[10px] font-bold text-brand">
+                      {c.kind}
+                    </span>
+                  )}
                   <span className="mono text-[12px] text-mute">›</span>
                 </button>
               ))}

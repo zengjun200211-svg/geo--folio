@@ -4,20 +4,6 @@ import PatternWaves from './PatternWaves.jsx'
 export default function Hero() {
   return (
     <section id="top" className="relative flex h-screen min-h-[700px] flex-col overflow-hidden">
-      {/* 暗色工作台氛围图 */}
-      <div className="absolute inset-0">
-        <img
-          src={import.meta.env.BASE_URL + 'hero-workbench.webp'}
-          alt="暗色多屏数据看板工作台氛围图"
-          className="h-full w-full object-cover object-center opacity-55"
-          loading="eager"
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/85 to-bg/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/40" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0A0A0C] via-[#0A0A0C]/60 to-transparent" />
-      </div>
-
       {/* 点阵波浪背景 */}
       <PatternWaves
         preset="silk"
