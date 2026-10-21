@@ -264,7 +264,6 @@ export default function ContentHits() {
               <SpecRow k="评论" v={current.comments} />
               <SpecRow k="收藏" v={current.collects} />
               <SpecRow k="转发" v={current.shares} />
-              <SpecRow k="涨粉" v={current.follows} />
               <SpecRow k="我负责的环节" v={current.role} />
             </div>
 
