@@ -174,7 +174,7 @@ export default function ContentHits() {
               <p className="mono mt-1 text-[9px] tracking-[0.18em] text-brand">{s.en}</p>
               <p className="cn mt-3 border-t border-line pt-3 text-[11px] leading-relaxed text-sub">
                 <span className="cn mr-1 rounded bg-line px-1 py-px text-[9px] tracking-[0.1em] text-mute">
-                  口径
+                  说明
                 </span>
                 {s.note}
               </p>
