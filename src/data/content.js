@@ -217,9 +217,6 @@ export const HIT_GROUPS = {
   ],
 }
 
-// 方法论示例标签（02 文档举例，成片后按实际替换）
-export const METHOD_TAGS_DEMO = ['热点+钩子', '反差开头', '评论区运营']
-
 // ---------- 03 COMMERCIAL ----------
 export const COMMERCIAL_CASES = [
   {

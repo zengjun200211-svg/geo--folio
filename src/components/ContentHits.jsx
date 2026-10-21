@@ -6,7 +6,6 @@ import {
   HIT_GROUPS,
   HIT_STATS,
   HIT_TABS,
-  METHOD_TAGS_DEMO,
 } from '../data/content.js'
 
 const METHOD_STEPS = [
@@ -228,7 +227,10 @@ export default function ContentHits() {
         </div>
 
         {/* 编号项目卡 + 右侧选中大图 */}
-        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
+        <p className="mono mt-10 mb-4 text-[9px] tracking-[0.2em] text-mute" data-reveal>
+          CLICK COVER ▶ TO PLAY ON DOUYIN · 点击卡片封面播放按钮，跳转抖音查看原视频
+        </p>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
           <div
             ref={scrollRef}
             onWheel={onWheel}
@@ -268,19 +270,24 @@ export default function ContentHits() {
             </div>
 
             <div className="mt-4">
-              <p className="mono mb-2 text-[9px] tracking-[0.2em] text-mute">
-                METHOD TAGS · 方法论标签（示例，按实际替换）
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {METHOD_TAGS_DEMO.map((t) => (
-                  <span
-                    key={t}
-                    className="cn rounded-full border border-line px-3 py-1 text-[11px] text-sub"
-                  >
-                    {t}
+              {current.link ? (
+                <a
+                  href={current.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between rounded-lg border border-brand/40 bg-brand/10 px-4 py-3 transition-colors hover:bg-brand/20"
+                >
+                  <span className="cn text-[12px] font-bold text-brand">▶ 观看原视频</span>
+                  <span className="mono text-[10px] tracking-[0.16em] text-brand/80">DOUYIN ↗</span>
+                </a>
+              ) : (
+                <div className="flex items-center justify-between rounded-lg border border-line/60 bg-panel px-4 py-3">
+                  <span className="cn text-[12px] text-sub">▶ 观看原视频</span>
+                  <span className="cn text-[10px] text-mute">
+                    <Pending />
                   </span>
-                ))}
-              </div>
+                </div>
+              )}
             </div>
             </>
             ) : (
