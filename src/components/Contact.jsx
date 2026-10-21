@@ -5,23 +5,42 @@ export default function Contact() {
   const [openFaq, setOpenFaq] = useState(-1)
   const [toast, setToast] = useState('')
 
-  const copyWechat = async () => {
+  const copyText = async (text) => {
     try {
-      await navigator.clipboard.writeText('kFcVMe616')
-      setToast('微信号已复制：kFcVMe616')
+      await navigator.clipboard.writeText(text)
+      return true
     } catch {
-      setToast('复制失败，请手动添加：kFcVMe616')
+      try {
+        const ta = document.createElement('textarea')
+        ta.value = text
+        ta.style.position = 'fixed'
+        ta.style.opacity = '0'
+        document.body.appendChild(ta)
+        ta.select()
+        const ok = document.execCommand('copy')
+        document.body.removeChild(ta)
+        return ok
+      } catch {
+        return false
+      }
     }
+  }
+
+  const copyWechat = async () => {
+    const ok = await copyText('kFcVMe616')
+    setToast(ok ? '微信号已复制：kFcVMe616' : '复制失败，请手动添加：kFcVMe616')
     setTimeout(() => setToast(''), 2000)
   }
 
   const copyMail = async () => {
-    try {
-      await navigator.clipboard.writeText('1075584739@qq.com')
-      setToast('邮箱已复制：1075584739@qq.com')
-    } catch {
-      setToast('复制失败，请手动添加：1075584739@qq.com')
-    }
+    const ok = await copyText('1075584739@qq.com')
+    setToast(ok ? '邮箱已复制：1075584739@qq.com' : '复制失败，请手动添加：1075584739@qq.com')
+    setTimeout(() => setToast(''), 2000)
+  }
+
+  const copyTel = async () => {
+    const ok = await copyText('15019181937')
+    setToast(ok ? '电话号码已复制：15019181937' : '复制失败，请手动拨打：15019181937')
     setTimeout(() => setToast(''), 2000)
   }
 
@@ -56,9 +75,14 @@ export default function Contact() {
               </li>
               <li className="flex items-center justify-between gap-4 py-4">
                 <span className="mono text-[10px] tracking-[0.2em] text-mute">TEL · 电话</span>
-                <a href="tel:15019181937" className="cn text-[14px] text-text underline-offset-4 hover:text-brand hover:underline">
-                  15019181937
-                </a>
+                <button
+                  type="button"
+                  onClick={copyTel}
+                  className="cn rounded text-[14px] text-text underline-offset-4 transition-colors hover:text-brand hover:underline"
+                  title="点击复制电话号码"
+                >
+                  15019181937<span className="ml-1 text-brand">（点击复制）</span>
+                </button>
               </li>
               <li className="flex items-center justify-between gap-4 py-4">
                 <span className="mono text-[10px] tracking-[0.2em] text-mute">WECHAT · 微信</span>
