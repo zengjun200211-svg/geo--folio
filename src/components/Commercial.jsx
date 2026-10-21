@@ -89,9 +89,22 @@ function CaseDetail({ item }) {
             {item.phases.map((p, i) => (
               <div key={p.name} className="flex gap-3 rounded-md border border-ink/15 bg-white/40 px-3 py-2.5">
                 <span className="mono mt-0.5 text-[12px] font-bold text-brand">{String(i + 1).padStart(2, '0')}</span>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="cn text-[13px] font-bold text-ink">{p.name}</p>
                   <p className="cn mt-0.5 text-[11.5px] leading-relaxed text-ink/70">{p.desc}</p>
+                  {p.stats && (
+                    <p className="mono mt-1.5 text-[10px] tracking-[0.06em] text-ink/60">{p.stats}</p>
+                  )}
+                  {p.link && (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cn mt-2 inline-flex items-center gap-1.5 rounded border border-brand/50 bg-brand/10 px-2.5 py-1 text-[11px] font-bold text-brand transition-colors hover:bg-brand/20"
+                    >
+                      ▶ 查看原视频 ↗
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
