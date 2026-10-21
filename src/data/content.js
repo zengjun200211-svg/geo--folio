@@ -314,7 +314,7 @@ export const COMMERCIAL_CASES = [
   {
     code: 'B-06',
     kind: '商单种草',
-    title: '产品商单创意内容',
+    title: '商单创意种草',
     role: '创意商单项目 · 供应商对接 + 内容审核',
     actions: [
       '供应商对接：排期 / 交付 / 验收，让多方按同一节奏跑',
