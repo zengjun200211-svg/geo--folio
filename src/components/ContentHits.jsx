@@ -227,9 +227,18 @@ export default function ContentHits() {
         </div>
 
         {/* 编号项目卡 + 右侧选中大图 */}
-        <p className="mono mt-10 mb-4 text-[9px] tracking-[0.2em] text-mute" data-reveal>
-          CLICK COVER ▶ TO PLAY ON DOUYIN · 点击卡片封面播放按钮，跳转抖音查看原视频
-        </p>
+        <div
+          className="mt-10 mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border border-brand/30 bg-brand/10 px-4 py-3"
+          data-reveal
+        >
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+          <span className="cn text-[12px] font-bold text-brand">点击卡片封面播放按钮，跳转抖音查看原视频</span>
+          <span className="mono text-[9px] tracking-[0.18em] text-brand/70">CLICK COVER ▶ TO PLAY ON DOUYIN</span>
+        </div>
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
           <div
             ref={scrollRef}
@@ -275,10 +284,15 @@ export default function ContentHits() {
                   href={current.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between rounded-lg border border-brand/40 bg-brand/10 px-4 py-3 transition-colors hover:bg-brand/20"
+                  className="flex items-center justify-between rounded-lg bg-brand px-4 py-3 transition-colors hover:bg-brand/85"
                 >
-                  <span className="cn text-[12px] font-bold text-brand">▶ 观看原视频</span>
-                  <span className="mono text-[10px] tracking-[0.16em] text-brand/80">DOUYIN ↗</span>
+                  <span className="cn flex items-center gap-2 text-[13px] font-bold text-white">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    观看原视频
+                  </span>
+                  <span className="mono text-[10px] tracking-[0.16em] text-white/85">DOUYIN ↗</span>
                 </a>
               ) : (
                 <div className="flex items-center justify-between rounded-lg border border-line/60 bg-panel px-4 py-3">
