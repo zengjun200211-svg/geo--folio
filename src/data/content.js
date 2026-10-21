@@ -285,7 +285,7 @@ export const COMMERCIAL_CASES = [
     code: 'B-04',
     kind: '商单种草',
     title: 'vivo S60 商单种草',
-    role: '信息流项目 · 供应商对接 + 内容审核',
+    role: '信息流项目 · 文案撰写 + 供应商对接 + 内容审核',
     actions: [
       '供应商对接：排期 / 交付 / 验收，让多方按同一节奏跑',
       '内容审核：合规 / 品牌表达 / 转化钩子逐项过审',
@@ -301,7 +301,7 @@ export const COMMERCIAL_CASES = [
     code: 'B-05',
     kind: '商单种草',
     title: 'vivo X Fold6 商单种草',
-    role: '信息流项目 · 供应商对接 + 内容审核',
+    role: '信息流项目 · 文案撰写 + 供应商对接 + 内容审核',
     actions: [
       '供应商对接：排期 / 交付 / 验收，让多方按同一节奏跑',
       '内容审核：合规 / 品牌表达 / 转化钩子逐项过审',
