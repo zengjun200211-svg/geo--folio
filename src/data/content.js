@@ -236,7 +236,7 @@ export const COMMERCIAL_CASES = [
       {
         name: '国风创意 vivo X300U 宣传',
         desc: 'vivo X 300 Ultra · 2026-07',
-        stats: '播放 2425 · 赞 45 · 评 14 · 藏 13 · 转 5',
+        stats: '播放 318000 · 赞 1.1万 · 评 52 · 藏 811 · 转 294',
         link: 'https://v.douyin.com/VR_y5UiLUlc/',
       },
       {
