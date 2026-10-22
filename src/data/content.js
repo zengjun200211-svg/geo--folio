@@ -234,10 +234,10 @@ export const COMMERCIAL_CASES = [
     phasesTitle: 'EXECUTION BREAKDOWN / 项目执行明细',
     phases: [
       {
-        name: '阿如那 vivo X300U 宣传',
+        name: '国风创意 vivo X300U 宣传',
         desc: 'vivo X 300 Ultra · 2026-07',
         stats: '播放 2425 · 赞 45 · 评 14 · 藏 13 · 转 5',
-        link: 'https://v.douyin.com/OFfg74weVFw/',
+        link: 'https://v.douyin.com/VR_y5UiLUlc/',
       },
       {
         name: '线条小狗 vivo X300E',
