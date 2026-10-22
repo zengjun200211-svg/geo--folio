@@ -260,8 +260,8 @@ export const COMMERCIAL_CASES = [
       {
         name: '晴天四件套',
         desc: 'vivo X 500 · 2026-09',
-        stats: '赞 18 · 评 2 · 藏 11 · 转 13',
-        link: 'https://v.douyin.com/OZdRSaFi_ro/',
+        stats: '播放 80000 · 赞 459 · 评 29 · 藏 31 · 转 28',
+        link: 'https://v.douyin.com/qS7onp_vb30/',
       },
       {
         name: 'X500 系列视频传播',
