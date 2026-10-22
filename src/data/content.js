@@ -266,8 +266,8 @@ export const COMMERCIAL_CASES = [
       {
         name: 'X500 系列视频传播',
         desc: 'vivo X 500 · 2026-09',
-        stats: '播放 455 · 赞 19 · 评 2 · 藏 12 · 转 13',
-        link: 'https://v.douyin.com/HOf-7KDsgkE/',
+        stats: '播放 286000 · 赞 1.5万 · 评 152 · 藏 1036 · 转 673',
+        link: 'https://v.douyin.com/L1qfa_X5KMM/',
       },
     ],
     badges: ['vivo X 500', 'X 500 Pro Max', 'X 300 Ultra', 'X 300E', 'S60', 'iQOO Neo11'],
