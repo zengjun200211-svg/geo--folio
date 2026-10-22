@@ -240,10 +240,10 @@ export const COMMERCIAL_CASES = [
         link: 'https://v.douyin.com/VR_y5UiLUlc/',
       },
       {
-        name: '线条小狗 vivo X300E',
-        desc: 'vivo S60 · 2026-07',
-        stats: '播放 194 · 赞 102 · 评 6 · 藏 28 · 转 3',
-        link: 'https://www.xiaohongshu.com/discovery/item/6a69ef48000000000f012d07?source=webshare&xhsshare=pc_web&xsec_token=ABNhSTIb0gTEaFu1hFFB4VzGmHIShXvfQmx-GAOPOScnM=&xsec_source=pc_share',
+        name: 'Neo11 零售机评测',
+        desc: 'iQOO Neo11 至尊版 · 2026-08',
+        stats: '赞 1.1万 · 评 139 · 藏 304 · 转 156',
+        link: 'https://v.douyin.com/5N2WAlYpt7M/',
       },
       {
         name: 'Neo11 零售机评测',
