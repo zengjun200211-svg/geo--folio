@@ -102,21 +102,26 @@ export default function Contact() {
             </ul>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              {['下载 CV（PDF）', '下载作品集（PDF）'].map((label) => (
-                <button
-                  key={label}
-                  type="button"
-                  disabled
-                  title="文件待补"
-                  className="group flex items-center gap-3 rounded-full border border-dashed border-line px-6 py-3 text-left opacity-70"
-                >
-                  <span className="cn text-[13px] text-sub">{label}</span>
-                  <span className="mono text-[9px] tracking-[0.16em] text-mute">待补文件 ↓</span>
-                </button>
-              ))}
+              <a
+                href={`${import.meta.env.BASE_URL}files/resume-zengjun.pdf`}
+                download="曾俊-个人简历.pdf"
+                className="group flex items-center gap-3 rounded-full border border-brand/50 bg-brand/10 px-6 py-3 text-left transition-colors hover:border-brand hover:bg-brand/20"
+              >
+                <span className="cn text-[13px] text-text">下载 CV（PDF）</span>
+                <span className="mono text-[9px] tracking-[0.16em] text-brand">↓</span>
+              </a>
+              <button
+                type="button"
+                disabled
+                title="文件待补"
+                className="group flex items-center gap-3 rounded-full border border-dashed border-line px-6 py-3 text-left opacity-70"
+              >
+                <span className="cn text-[13px] text-sub">下载作品集（PDF）</span>
+                <span className="mono text-[9px] tracking-[0.16em] text-mute">待补文件 ↓</span>
+              </button>
             </div>
             <p className="cn mt-3 text-[11px] text-mute">
-              PDF 请放入「素材/07_简历与PDF/」，上线前替换为真实下载链接。
+              作品集 PDF 待补充，后续放入「素材/07_简历与PDF/」。
             </p>
           </div>
 
