@@ -424,7 +424,7 @@ export const AI_TOOLS = [
     en: 'VIBE CODING LOG',
     use: '确立风格 → 搭 Hero+Profile+Hits 样板 → 整理内容利用 Agent 放入 → 接入 GlowCursor / 手风琴经历 / 工具 Dock → 补 AI Workflow 手风琴画廊、FAQ 丝滑展开、HITS 横条滚轮接管 → 每轮按截图反馈微调排版 / 字号 / 配色 / 响应式 → Git 多台设备同步打磨。',
     output: null,
-    images: ['images/agent/vibe-coding.webp', 'images/agent/doubao.webp', 'images/knowledge/github-2.webp'],
+    images: ['images/agent/ai-workflow-page.webp', 'images/agent/vibe-coding.webp', 'images/agent/doubao.webp', 'images/knowledge/github-2.webp'],
     pendingText: '建站过程截图同步留存，最后补入本卡',
   },
 ]
