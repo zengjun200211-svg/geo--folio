@@ -79,7 +79,7 @@ export default function DataOps() {
                       i === idx ? 'opacity-100' : 'opacity-0'
                     }`}
                     loading={i === 0 ? 'eager' : 'lazy'}
-                    fetchPriority={i === 0 ? 'high' : 'auto'}
+                    fetchpriority={i === 0 ? 'high' : 'auto'}
                   />
                 ))}
                 {/* 边角极淡晕染：只柔和过渡，不压暗 */}

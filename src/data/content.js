@@ -576,19 +576,19 @@ export const EXPERIENCE = [
 // slug 对应 simple-icons CDN，图标加载失败自动回退字母块
 export const TOOL_GROUPS = [
   { label: 'AI 模型', items: [
-    { name: 'ChatGPT', use: '通用推理 / 文案', local: '/icons/chatgpt.jpg', glyph: 'GPT' },
+    { name: 'ChatGPT', use: '通用推理 / 文案', local: '/icons/chatgpt.png', glyph: 'GPT' },
     { name: 'Gemini', use: '长文 / 多模态', slug: 'googlegemini', color: '4796E3', glyph: 'G' },
     { name: 'DeepSeek', use: '深度推理 / 代码', slug: 'deepseek', color: '4D6BFE', glyph: 'DS' },
-    { name: '豆包工作', use: '办公 / Agent', local: '/icons/doubao.jpg', glyph: '豆' },
+    { name: '豆包工作', use: '办公 / Agent', local: '/icons/doubao.png', glyph: '豆' },
     { name: 'Qwen Agent', use: '通义智能体', slug: 'qwen', color: '615CED', glyph: 'QW' },
-    { name: 'WorkBuddy', use: '工作助手', local: '/icons/workbuddy.jpg', glyph: 'WB' },
+    { name: 'WorkBuddy', use: '工作助手', local: '/icons/workbuddy.png', glyph: 'WB' },
   ]},
   { label: '设计', items: [
     { name: 'Photoshop', use: '视觉修图 / 海报', slug: 'adobephotoshop', color: '31A8FF', glyph: 'Ps' },
   ]},
   { label: '协同与知识', items: [
-    { name: '飞书', use: '协同 / 多维表格', local: '/icons/lark.jpg', glyph: '飞' },
-    { name: 'NotebookLM', use: '笔记 / 知识库', local: '/icons/notebooklm.jpg', glyph: 'NB' },
+    { name: '飞书', use: '协同 / 多维表格', local: '/icons/lark.png', glyph: '飞' },
+    { name: 'NotebookLM', use: '笔记 / 知识库', local: '/icons/notebooklm.png', glyph: 'NB' },
     { name: 'Obsidian', use: '个人知识库', slug: 'obsidian', color: '7C3AED', glyph: 'OB' },
   ]},
 ]
