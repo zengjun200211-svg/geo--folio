@@ -246,10 +246,10 @@ export const COMMERCIAL_CASES = [
         link: 'https://v.douyin.com/5N2WAlYpt7M/',
       },
       {
-        name: 'Neo11 零售机评测',
-        desc: 'iQOO Neo11 至尊版 · 2026-08',
-        stats: '播放 1.9万 · 赞 176 · 评 42 · 藏 59 · 转 44',
-        link: 'https://v.douyin.com/cklMVX9cZFU/',
+        name: 'vivo X300E 调色盘',
+        desc: 'vivo X300E · 2026-09',
+        stats: '播放 21万 · 赞 7156 · 评 170 · 藏 2536 · 转 2865',
+        link: 'https://v.douyin.com/sfctFkKooI0/',
       },
       {
         name: '周杰伦《西西里》MV × vivo X500 Pro Max 短视频',
