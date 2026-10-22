@@ -242,7 +242,7 @@ export const COMMERCIAL_CASES = [
       {
         name: 'Neo11 零售机评测',
         desc: 'iQOO Neo11 至尊版 · 2026-08',
-        stats: '赞 1.1万 · 评 139 · 藏 304 · 转 156',
+        stats: '播放 350000 · 赞 1.1万 · 评 139 · 藏 304 · 转 156',
         link: 'https://v.douyin.com/5N2WAlYpt7M/',
       },
       {
