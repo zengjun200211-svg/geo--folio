@@ -202,6 +202,7 @@ export default function ContentHits() {
         </div>
 
         {/* 账号筛选 */}
+        {allItems.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2" data-reveal>
           <button
             type="button"
@@ -225,8 +226,7 @@ export default function ContentHits() {
             </button>
           ))}
         </div>
-
-        {/* 编号项目卡 + 右侧选中大图 */}
+        )}
         <p className="mono mt-10 mb-4 text-[9px] tracking-[0.2em] text-mute" data-reveal>
           CLICK COVER ▶ TO PLAY ON DOUYIN · 点击卡片封面播放按钮，跳转抖音查看原视频
         </p>

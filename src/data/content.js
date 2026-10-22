@@ -157,7 +157,7 @@ export const HIT_STATS = [
 ]
 
 export const HIT_TABS = [
-  { id: 'own', cn: '自有账号', en: 'OWNED ACCOUNTS' },
+  { id: 'own', cn: '数码Π', en: 'OWNED ACCOUNT' },
   { id: 'managed', cn: '操盘账号', en: 'MANAGED ACCOUNTS' },
 ]
 
@@ -169,10 +169,7 @@ const v = (code, account, cover, title, link) => ({
 
 export const HIT_GROUPS = {
   own: [
-    v('H-34', '自有账号', 'images/hits/h-01-01.jpg', '自有爆款 01'),
-    v('H-35', '自有账号', 'images/hits/h-02-01.jpg', '自有爆款 02'),
-    v('H-36', '自有账号', 'images/hits/h-03-01.jpg', '自有爆款 03'),
-    v('H-37', '自有账号', 'images/hits/h-06-01.jpg', '自有爆款 04'),
+    // 数码Π · 作品封面与链接待用户后续提供
   ],
   managed: [
     // 回声屏幕所（6条）
