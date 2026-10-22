@@ -220,6 +220,62 @@ export const HIT_GROUPS = {
 // ---------- 03 COMMERCIAL ----------
 export const COMMERCIAL_CASES = [
   {
+    code: 'B-06',
+    kind: '商单种草',
+    title: '商单创意种草',
+    role: '创意商单项目 · 文案撰写 + 供应商对接 + 内容审核',
+    actions: [
+      '供应商对接：排期 / 交付 / 验收，让多方按同一节奏跑',
+      '内容审核：合规 / 品牌表达 / 转化钩子逐项过审',
+      '创意内容按产品归类投放：爆料解读 / 8K Live / 多机对比 / MV 传播 / 探店 / 评测类型矩阵',
+      '文案撰写：针对产品特性，结合创意方向撰写种草文案',
+      '数据复盘 + 知识库沉淀：针对项目 KPI 定向复盘，沉淀经验与失误等可改进项，复用至下次种草',
+    ],
+    phasesTitle: 'EXECUTION BREAKDOWN / 项目执行明细',
+    phases: [
+      {
+        name: '阿如那 vivo X300U 宣传',
+        desc: 'vivo X 300 Ultra · 2026-07',
+        stats: '播放 2425 · 赞 45 · 评 14 · 藏 13 · 转 5',
+        link: 'https://v.douyin.com/OFfg74weVFw/',
+      },
+      {
+        name: '线条小狗 vivo X300E',
+        desc: 'vivo S60 · 2026-07',
+        stats: '播放 194 · 赞 102 · 评 6 · 藏 28 · 转 3',
+        link: 'https://www.xiaohongshu.com/discovery/item/6a69ef48000000000f012d07?source=webshare&xhsshare=pc_web&xsec_token=ABNhSTIb0gTEaFu1hFFB4VzGmHIShXvfQmx-GAOPOScnM=&xsec_source=pc_share',
+      },
+      {
+        name: 'Neo11 零售机评测',
+        desc: 'iQOO Neo11 至尊版 · 2026-08',
+        stats: '播放 19000 · 赞 176 · 评 42 · 藏 59 · 转 44',
+        link: 'https://v.douyin.com/cklMVX9cZFU/',
+      },
+      {
+        name: '周杰伦《西西里》MV × vivo X500 Pro Max 短视频',
+        desc: 'vivo X 500 Pro Max · 2026-09',
+        stats: '播放 28000 · 赞 317 · 评 27 · 藏 38 · 转 113',
+        link: 'https://v.douyin.com/Tgh-zl-F2HA/',
+      },
+      {
+        name: '晴天四件套',
+        desc: 'vivo X 500 · 2026-09',
+        stats: '赞 18 · 评 2 · 藏 11 · 转 13',
+        link: 'https://v.douyin.com/OZdRSaFi_ro/',
+      },
+      {
+        name: 'X500 系列视频传播',
+        desc: 'vivo X 500 · 2026-09',
+        stats: '播放 455 · 赞 19 · 评 2 · 藏 12 · 转 13',
+        link: 'https://v.douyin.com/HOf-7KDsgkE/',
+      },
+    ],
+    badges: ['vivo X 500', 'X 500 Pro Max', 'X 300 Ultra', 'X 300E', 'S60', 'iQOO Neo11'],
+    result: '205 条种草内容，覆盖 6 款产品，总播放量 44.0 万，总互动量 1.7 万',
+    geoNote: null,
+    sources: ['抖音', '小红书', '视频号', '微博', '快手'],
+  },
+  {
     code: 'B-01',
     title: '双鱼体育 × 十五运合作项目',
     tagline: '#诗与远方 乒出广东力量#',
@@ -312,62 +368,6 @@ export const COMMERCIAL_CASES = [
     result: '282 篇（图文 162 + 视频 120），总阅读量 20.1 万，总互动量 5000+',
     geoNote: null,
     sources: ['抖音', '小红书'],
-  },
-  {
-    code: 'B-06',
-    kind: '商单种草',
-    title: '商单创意种草',
-    role: '创意商单项目 · 文案撰写 + 供应商对接 + 内容审核',
-    actions: [
-      '供应商对接：排期 / 交付 / 验收，让多方按同一节奏跑',
-      '内容审核：合规 / 品牌表达 / 转化钩子逐项过审',
-      '创意内容按产品归类投放：爆料解读 / 8K Live / 多机对比 / MV 传播 / 探店 / 评测类型矩阵',
-      '文案撰写：针对产品特性，结合创意方向撰写种草文案',
-      '数据复盘 + 知识库沉淀：针对项目 KPI 定向复盘，沉淀经验与失误等可改进项，复用至下次种草',
-    ],
-    phasesTitle: 'EXECUTION BREAKDOWN / 项目执行明细',
-    phases: [
-      {
-        name: '阿如那 vivo X300U 宣传',
-        desc: 'vivo X 300 Ultra · 2026-07',
-        stats: '播放 2425 · 赞 45 · 评 14 · 藏 13 · 转 5',
-        link: 'https://v.douyin.com/OFfg74weVFw/',
-      },
-      {
-        name: '线条小狗 vivo X300E',
-        desc: 'vivo S60 · 2026-07',
-        stats: '播放 194 · 赞 102 · 评 6 · 藏 28 · 转 3',
-        link: 'https://www.xiaohongshu.com/discovery/item/6a69ef48000000000f012d07?source=webshare&xhsshare=pc_web&xsec_token=ABNhSTIb0gTEaFu1hFFB4VzGmHIShXvfQmx-GAOPOScnM=&xsec_source=pc_share',
-      },
-      {
-        name: 'Neo11 零售机评测',
-        desc: 'iQOO Neo11 至尊版 · 2026-08',
-        stats: '播放 19000 · 赞 176 · 评 42 · 藏 59 · 转 44',
-        link: 'https://v.douyin.com/cklMVX9cZFU/',
-      },
-      {
-        name: '周杰伦《西西里》MV × vivo X500 Pro Max 短视频',
-        desc: 'vivo X 500 Pro Max · 2026-09',
-        stats: '播放 28000 · 赞 317 · 评 27 · 藏 38 · 转 113',
-        link: 'https://v.douyin.com/Tgh-zl-F2HA/',
-      },
-      {
-        name: '晴天四件套',
-        desc: 'vivo X 500 · 2026-09',
-        stats: '赞 18 · 评 2 · 藏 11 · 转 13',
-        link: 'https://v.douyin.com/OZdRSaFi_ro/',
-      },
-      {
-        name: 'X500 系列视频传播',
-        desc: 'vivo X 500 · 2026-09',
-        stats: '播放 455 · 赞 19 · 评 2 · 藏 12 · 转 13',
-        link: 'https://v.douyin.com/HOf-7KDsgkE/',
-      },
-    ],
-    badges: ['vivo X 500', 'X 500 Pro Max', 'X 300 Ultra', 'X 300E', 'S60', 'iQOO Neo11'],
-    result: '205 条种草内容，覆盖 6 款产品，总播放量 44.0 万，总互动量 1.7 万',
-    geoNote: null,
-    sources: ['抖音', '小红书', '视频号', '微博', '快手'],
   },
 ]
 
