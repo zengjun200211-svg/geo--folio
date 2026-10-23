@@ -201,9 +201,15 @@ export default function ContentHits() {
           ))}
         </div>
 
-        {/* 账号筛选（仅多账号时显示） */}
-        {allItems.length > 0 && accountList.length > 1 && (
+        {/* 提示行：固定间距，两 tab 结构一致 */}
+        <p className="mono mt-8 mb-4 text-[9px] tracking-[0.2em] text-mute" data-reveal>
+          CLICK COVER ▶ TO PLAY ON DOUYIN · 点击卡片封面播放按钮，跳转抖音查看原视频
+        </p>
+
+        {/* 账号筛选：两 tab 均渲染保持结构对等；单账号时不显示「全部」按钮 */}
+        {allItems.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2" data-reveal>
+          {accountList.length > 1 && (
           <button
             type="button"
             onClick={() => setAccount(null)}
@@ -213,6 +219,7 @@ export default function ContentHits() {
           >
             全部 <span className="mono ml-1 text-[9px] opacity-60">{allItems.length}</span>
           </button>
+          )}
           {accountList.map(([name, count]) => (
             <button
               key={name}
@@ -227,10 +234,7 @@ export default function ContentHits() {
           ))}
         </div>
         )}
-        <p className="mono mt-10 mb-4 text-[9px] tracking-[0.2em] text-mute" data-reveal>
-          CLICK COVER ▶ TO PLAY ON DOUYIN · 点击卡片封面播放按钮，跳转抖音查看原视频
-        </p>
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
+        <div className="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
           <div
             ref={scrollRef}
             onWheel={onWheel}
