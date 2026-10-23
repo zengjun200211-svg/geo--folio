@@ -201,8 +201,8 @@ export default function ContentHits() {
           ))}
         </div>
 
-        {/* 账号筛选 */}
-        {allItems.length > 0 && (
+        {/* 账号筛选（仅多账号时显示） */}
+        {allItems.length > 0 && accountList.length > 1 && (
         <div className="mt-4 flex flex-wrap gap-2" data-reveal>
           <button
             type="button"
@@ -262,6 +262,7 @@ export default function ContentHits() {
             <div className="mt-3">
               <SpecRow k="平台 / 账号" v={current.account} />
               <SpecRow k="发布时间" v={current.date} />
+              <SpecRow k="播放" v={current.plays} />
               <SpecRow k="点赞" v={current.likes} />
               <SpecRow k="评论" v={current.comments} />
               <SpecRow k="收藏" v={current.collects} />
