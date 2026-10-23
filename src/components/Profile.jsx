@@ -69,16 +69,17 @@ export default function Profile() {
           {/* 左：形象照 + 姓名 + 核心能力 */}
           <aside data-reveal>
             <div className="group relative overflow-hidden rounded-xl border border-line bg-panel shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-20px_rgba(0,0,0,0.8)] transition-all duration-500 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_60px_-20px_rgba(238,33,30,0.25)]">
-              {/* 人像区：红色对角光晕 + 细网格 + 个人形象照 */}
+              {/* 人像区：红色对角光晕 + 细网格 + 风格化形象照 */}
               <div
-                className="relative flex h-60 items-center justify-center overflow-hidden border-b border-line"
+                className="relative h-60 overflow-hidden border-b border-line"
                 style={{
                   background:
                     'radial-gradient(120% 120% at 15% 0%, rgba(238,33,30,0.28) 0%, rgba(238,33,30,0.04) 45%, transparent 70%), linear-gradient(135deg, #14151a 0%, #0d0e13 100%)',
                 }}
               >
+                {/* 底层网格 */}
                 <div
-                  className="pointer-events-none absolute inset-0 opacity-[0.15]"
+                  className="pointer-events-none absolute inset-0 opacity-[0.14]"
                   style={{
                     backgroundImage:
                       'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
@@ -86,11 +87,41 @@ export default function Profile() {
                     maskImage: 'radial-gradient(80% 80% at 30% 20%, black, transparent)',
                   }}
                 />
+                {/* 照片：左移 + 轻微调色统一站点色调 */}
                 <img
                   src="images/profile/portrait.webp"
                   alt="曾俊 ZENG JUN 个人形象照"
-                  className="absolute inset-0 h-full w-full object-cover object-[50%_25%]"
+                  className="absolute inset-y-0 left-0 h-full w-full object-cover object-[36%_22%]"
+                  style={{ filter: 'saturate(0.86) brightness(1.04) contrast(1.08)' }}
                   loading="lazy"
+                />
+                {/* 红色光晕叠加到照片（screen 混合，带氛围） */}
+                <div
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      'radial-gradient(110% 110% at 12% 0%, rgba(238,33,30,0.32) 0%, rgba(238,33,30,0.06) 42%, transparent 68%)',
+                    mixBlendMode: 'screen',
+                  }}
+                />
+                {/* 网格覆盖照片（overlay 混合，与控件组呼应） */}
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-[0.18]"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px)',
+                    backgroundSize: '28px 28px',
+                    maskImage: 'radial-gradient(90% 90% at 30% 15%, black, transparent)',
+                    mixBlendMode: 'overlay',
+                  }}
+                />
+                {/* 边缘渐隐：底部 + 右侧溶入卡片背景 */}
+                <div
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      'linear-gradient(to top, #0d0e13 0%, rgba(13,14,19,0.45) 18%, transparent 42%), linear-gradient(to left, #0d0e13 0%, rgba(13,14,19,0.35) 14%, transparent 40%)',
+                  }}
                 />
                 <span className="absolute left-4 top-3 mono rounded bg-black/45 px-2 py-1 text-[9px] tracking-[0.25em] text-white/90 backdrop-blur-sm">
                   PORTRAIT
