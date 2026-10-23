@@ -8,6 +8,7 @@ const LABELS = {
   'images/agent/chatgpt.webp': 'ChatGPT',
   'images/agent/gemini.webp': 'Gemini',
   'images/agent/deepseek.webp': 'DeepSeek',
+  'images/agent/doubao-home.webp': '豆包 AI',
   'images/agent/qwen.webp': '千问 Agent',
   'images/agent/doubao.webp': '豆包工作',
   'images/agent/workbuddy-1.webp': 'WorkBuddy',

@@ -388,7 +388,7 @@ export const AI_TOOLS = [
     name: 'Gemini/ChatGPT/DeepSeek 等 LLM 大模型',
     output: null,
     use: '按任务分工使用，不同需求配不同工具',
-    images: ['images/agent/chatgpt.webp', 'images/agent/gemini.webp', 'images/agent/deepseek.webp'],
+    images: ['images/agent/chatgpt.webp', 'images/agent/gemini.webp', 'images/agent/deepseek.webp', 'images/agent/doubao-home.webp'],
     pendingText: '各模型分工举例 2-3 个真实场景 + 对话截图',
   },
   {
