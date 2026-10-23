@@ -69,9 +69,9 @@ export default function Profile() {
           {/* 左：形象照 + 姓名 + 核心能力 */}
           <aside data-reveal>
             <div className="group relative overflow-hidden rounded-xl border border-line bg-panel shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-20px_rgba(0,0,0,0.8)] transition-all duration-500 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_60px_-20px_rgba(238,33,30,0.25)]">
-              {/* 人像区：红色对角光晕 + 细网格 */}
+              {/* 人像区：红色对角光晕 + 细网格 + 个人形象照 */}
               <div
-                className="relative flex h-44 items-center justify-center overflow-hidden border-b border-line"
+                className="relative flex h-60 items-center justify-center overflow-hidden border-b border-line"
                 style={{
                   background:
                     'radial-gradient(120% 120% at 15% 0%, rgba(238,33,30,0.28) 0%, rgba(238,33,30,0.04) 45%, transparent 70%), linear-gradient(135deg, #14151a 0%, #0d0e13 100%)',
@@ -86,21 +86,14 @@ export default function Profile() {
                     maskImage: 'radial-gradient(80% 80% at 30% 20%, black, transparent)',
                   }}
                 />
-                <svg
-                  className="h-16 w-16 text-mute/40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.1"
-                >
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" />
-                </svg>
-                <span className="absolute left-4 top-3 mono text-[9px] tracking-[0.25em] text-mute">
+                <img
+                  src="images/profile/portrait.webp"
+                  alt="曾俊 ZENG JUN 个人形象照"
+                  className="absolute inset-0 h-full w-full object-cover object-[50%_25%]"
+                  loading="lazy"
+                />
+                <span className="absolute left-4 top-3 mono rounded bg-black/45 px-2 py-1 text-[9px] tracking-[0.25em] text-white/90 backdrop-blur-sm">
                   PORTRAIT
-                </span>
-                <span className="absolute bottom-3 right-4 cn rounded border border-line/70 bg-bg/70 px-2 py-0.5 text-[10px] text-mute backdrop-blur-sm">
-                  【待补：个人形象照】
                 </span>
               </div>
               <div className="p-6">
