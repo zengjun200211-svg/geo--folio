@@ -58,6 +58,7 @@ function Card({ card, isActive, tone }) {
               src={card.thumb}
               alt={card.thumbCn}
               className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover/thumb:scale-110"
+              style={card.thumbPos ? { objectPosition: card.thumbPos } : undefined}
               loading="lazy"
             />
             {/* 渐变遮罩 */}

@@ -34,6 +34,8 @@ export const INDEX_CARDS = [
     en: ['PROFILE /', 'EXPERIENCE'],
     cn: '个人简介与能力地图',
     tone: 'paper',
+    thumb: 'images/profile/fashion.webp',
+    thumbPos: '50% 38%',
     thumbEn: 'PORTRAIT + SKILL MAP',
     thumbCn: '头像 / 能力映射表',
     foot: 'CONTENT OPS / GEO',
