@@ -110,18 +110,33 @@ export default function Contact() {
                 <span className="cn text-[13px] text-text">下载 CV（PDF）</span>
                 <span className="mono text-[9px] tracking-[0.16em] text-brand">↓</span>
               </a>
-              <button
-                type="button"
-                disabled
-                title="文件待补"
-                className="group flex items-center gap-3 rounded-full border border-dashed border-line px-6 py-3 text-left opacity-70"
+              <a
+                href={`${import.meta.env.BASE_URL}files/portfolio-matrix-h1.pptx`}
+                download="矩阵账号孵化H1季度复盘.pptx"
+                className="group flex items-center gap-3 rounded-full border border-brand/50 bg-brand/10 px-6 py-3 text-left transition-colors hover:border-brand hover:bg-brand/20"
               >
-                <span className="cn text-[13px] text-sub">下载作品集（PDF）</span>
-                <span className="mono text-[9px] tracking-[0.16em] text-mute">待补文件 ↓</span>
-              </button>
+                <span className="cn text-[13px] text-text">作品集 · 账号孵化 H1 复盘</span>
+                <span className="mono text-[9px] tracking-[0.16em] text-brand">PPT ↓</span>
+              </a>
+              <a
+                href={`${import.meta.env.BASE_URL}files/portfolio-geo-v6.pptx`}
+                download="GEO认知与执行-曾俊-优化版v6.pptx"
+                className="group flex items-center gap-3 rounded-full border border-brand/50 bg-brand/10 px-6 py-3 text-left transition-colors hover:border-brand hover:bg-brand/20"
+              >
+                <span className="cn text-[13px] text-text">作品集 · GEO 认知与执行</span>
+                <span className="mono text-[9px] tracking-[0.16em] text-brand">PPT ↓</span>
+              </a>
+              <a
+                href={`${import.meta.env.BASE_URL}files/portfolio-personal.pptx`}
+                download="矩阵运营个人作品集_曾俊 更新版.pptx"
+                className="group flex items-center gap-3 rounded-full border border-brand/50 bg-brand/10 px-6 py-3 text-left transition-colors hover:border-brand hover:bg-brand/20"
+              >
+                <span className="cn text-[13px] text-text">作品集 · 矩阵运营个人能力</span>
+                <span className="mono text-[9px] tracking-[0.16em] text-brand">PPT ↓</span>
+              </a>
             </div>
             <p className="cn mt-3 text-[11px] text-mute">
-              作品集 PDF 待补充，后续放入「素材/07_简历与PDF/」。
+              三份作品集 PPT 可直接下载：账号孵化季度复盘 / GEO 认知与执行 / 矩阵运营个人能力。
             </p>
           </div>
 
