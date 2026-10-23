@@ -170,9 +170,9 @@ const v = (code, account, cover, title, link) => ({
 export const HIT_GROUPS = {
   own: [
     // 数码Π（自有账号）
-    { ...v('DP-01', '数码Π', 'images/hits/own-01.jpg', 'vivo 蓝厂格局', null), plays: '683万', likes: '23.1万', comments: '1.8万', collects: '1.3万', shares: '3.0万', role: '内容策划、文案撰写、拍摄剪辑、发布运营' },
-    { ...v('DP-02', '数码Π', 'images/hits/own-02.jpg', '比肩苹果', null), plays: '310万', likes: '8.8万', comments: '8127', collects: '8054', shares: '7138', role: '内容策划、文案撰写、拍摄剪辑、发布运营' },
-    { ...v('DP-03', '数码Π', 'images/hits/own-03.jpg', 'iphone 十三香', null), plays: '198万', likes: '4.6万', comments: '7131', collects: '2698', shares: '1.2万', role: '内容策划、文案撰写、拍摄剪辑、发布运营' },
+    { ...v('DP-01', '数码Π', 'images/hits/own-01.jpg', 'vivo 人文关怀爆款', 'https://v.douyin.com/KEpxTAuSVmU/'), plays: '683万', likes: '23.1万', comments: '1.8万', collects: '1.3万', shares: '3.0万', role: '内容策划、文案撰写、拍摄剪辑、发布运营' },
+    { ...v('DP-02', '数码Π', 'images/hits/own-02.jpg', '苹果安卓对比爆款', 'https://v.douyin.com/3CEezBROqhs/'), plays: '310万', likes: '8.8万', comments: '8127', collects: '8054', shares: '7138', role: '内容策划、文案撰写、拍摄剪辑、发布运营' },
+    { ...v('DP-03', '数码Π', 'images/hits/own-03.jpg', '苹果的优势爆款', 'https://v.douyin.com/poslVjC1WYo/'), plays: '198万', likes: '4.6万', comments: '7131', collects: '2698', shares: '1.2万', role: '内容策划、文案撰写、拍摄剪辑、发布运营' },
   ],
   managed: [
     // 回声屏幕所（6条）
