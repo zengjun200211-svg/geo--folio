@@ -27,14 +27,14 @@ function ToolTile({ name, slug, color, local, glyph, cardColor }) {
   const src = local || (slug && `https://cdn.simpleicons.org/${slug}/${color}`)
   return (
     <div
-      className="tool-tile group relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-[5px] hover:bg-white/[0.14] hover:border-white/25"
+      className="tool-tile group relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/[0.07] bg-white/[0.045] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-[5px] hover:bg-white/[0.12] hover:border-white/20 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_10px_24px_-10px_rgba(238,33,30,0.35)]"
       style={{ "--glow": (cardColor || color) ? `#${cardColor || color}` : "#22d3ee" }}
     >
       <span className="tip">{name}</span>
       {!src || broken ? (
         <span
-          className="flex h-6 w-6 items-center justify-center rounded-md mono text-[11px] font-bold text-white"
-          style={{ backgroundColor: cardColor || "#333" }}
+          className="flex h-6 w-6 items-center justify-center rounded-lg mono text-[11px] font-bold text-white"
+          style={{ background: (cardColor || color) ? `linear-gradient(135deg, #${cardColor || color}, #${cardColor || color}88)` : "#333" }}
         >
           {glyph}
         </span>
@@ -43,7 +43,7 @@ function ToolTile({ name, slug, color, local, glyph, cardColor }) {
           src={src}
           alt={name}
           loading="lazy"
-          className="h-6 w-6 object-contain opacity-100 transition-all duration-300 group-hover:opacity-100 group-hover:drop-shadow-[0_0_8px_var(--glow)]"
+          className="h-6 w-6 rounded-[6px] object-contain opacity-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:opacity-100 group-hover:drop-shadow-[0_0_10px_var(--glow)]"
           onError={() => setBroken(true)}
         />
       )}
