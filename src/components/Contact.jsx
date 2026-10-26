@@ -116,7 +116,7 @@ export default function Contact() {
                 className="group flex items-center gap-3 rounded-full border border-brand/50 bg-brand/10 px-6 py-3 text-left transition-colors hover:border-brand hover:bg-brand/20"
               >
                 <span className="cn text-[13px] text-text">作品集 · 账号孵化 H1 复盘</span>
-                <span className="mono text-[9px] tracking-[0.16em] text-brand">PPT ↓</span>
+                <span className="mono text-[9px] tracking-[0.16em] text-brand">PPT ↓ · 约47MB</span>
               </a>
               <a
                 href={`${import.meta.env.BASE_URL}files/portfolio-geo-v6.pptx`}
@@ -124,7 +124,7 @@ export default function Contact() {
                 className="group flex items-center gap-3 rounded-full border border-brand/50 bg-brand/10 px-6 py-3 text-left transition-colors hover:border-brand hover:bg-brand/20"
               >
                 <span className="cn text-[13px] text-text">作品集 · GEO 认知与执行</span>
-                <span className="mono text-[9px] tracking-[0.16em] text-brand">PPT ↓</span>
+                <span className="mono text-[9px] tracking-[0.16em] text-brand">PPT ↓ · 约1.7MB</span>
               </a>
               <a
                 href={`${import.meta.env.BASE_URL}files/portfolio-personal.pptx`}
@@ -132,7 +132,7 @@ export default function Contact() {
                 className="group flex items-center gap-3 rounded-full border border-brand/50 bg-brand/10 px-6 py-3 text-left transition-colors hover:border-brand hover:bg-brand/20"
               >
                 <span className="cn text-[13px] text-text">作品集 · 矩阵运营个人能力</span>
-                <span className="mono text-[9px] tracking-[0.16em] text-brand">PPT ↓</span>
+                <span className="mono text-[9px] tracking-[0.16em] text-brand">PPT ↓ · 约11MB</span>
               </a>
             </div>
             <p className="cn mt-3 text-[11px] text-mute">

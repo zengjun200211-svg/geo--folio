@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SectionHeader from './SectionHeader.jsx'
 import ViewFrame from './ViewFrame.jsx'
 import BounceCards from './BounceCards.jsx'
@@ -26,6 +26,16 @@ const LABELS = {
 
 export default function AiWorkflow() {
   const [lightbox, setLightbox] = useState(null)
+
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') setLightbox(null)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [lightbox])
+
   return (
     <section id="ai-workflow" className="scroll-mt-16 border-t border-line/60 py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-6 lg:px-10">
@@ -104,6 +114,9 @@ export default function AiWorkflow() {
 
       {lightbox && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={lightbox.alt}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-8 cursor-zoom-out"
           onClick={() => setLightbox(null)}
         >
@@ -113,7 +126,7 @@ export default function AiWorkflow() {
             className="max-h-full max-w-full object-contain rounded-lg shadow-2xl"
           />
           <p className="absolute bottom-6 left-1/2 -translate-x-1/2 mono text-[11px] tracking-[0.2em] text-white/60">
-            {lightbox.alt} · 点击任意处关闭
+            {lightbox.alt} · 点击任意处关闭（Esc）
           </p>
         </div>
       )}

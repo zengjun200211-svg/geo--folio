@@ -59,7 +59,7 @@ export default function Hero() {
         </div>
 
         <div className="mt-12 flex items-end justify-between gap-6">
-          <div className="mono space-y-1 text-[10px] leading-relaxed tracking-[0.18em] text-mute">
+          <div className="mono space-y-1 rounded-lg border border-white/5 bg-bg/55 px-3 py-2 text-[10px] leading-relaxed tracking-[0.18em] text-sub shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] backdrop-blur-sm">
             <p>TEL — <a href="tel:15019181937" className="hover:text-brand">15019181937</a></p>
             <p>MAIL — <a href="mailto:1075584739@qq.com" className="hover:text-brand">1075584739@qq.com</a></p>
             <p>BASE — {SITE.base}</p>
@@ -67,7 +67,7 @@ export default function Hero() {
 
           <a href="#index" className="group flex flex-col items-center gap-2" aria-label="向下滚动到目录">
             <span className="mono text-[10px] tracking-[0.25em] text-sub transition-colors group-hover:text-brand hero-pulse">
-              SCROLL DOWN / 向下滑动
+              SCROLL DOWN<span className="hidden sm:inline"> / 向下滑动</span>
             </span>
             <span className="h-9 w-px bg-line">
               <span className="scroll-line block h-full w-px bg-brand" />

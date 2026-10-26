@@ -244,8 +244,8 @@ export default function Profile() {
           <p className="mono mb-6 text-center text-[10px] tracking-[0.22em] text-brand">
             <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-brand align-middle" /> DAILY TOOLS / 我常用的工具 <span className="ml-2 inline-block h-1.5 w-1.5 rounded-full bg-brand align-middle" />
           </p>
-          <div className="flex justify-center py-2">
-            <div className="dock inline-flex items-end gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl">
+          <div className="flex max-w-full justify-center overflow-x-clip py-2">
+            <div className="dock inline-flex max-w-full flex-wrap items-end justify-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl">
               {TOOL_GROUPS.flatMap((g) => g.items).map((t) => (
                 <ToolTile key={t.name} {...t} />
               ))}

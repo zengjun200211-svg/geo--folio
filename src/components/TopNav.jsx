@@ -4,6 +4,7 @@ import { NAV, SITE } from '../data/content.js'
 export default function TopNav() {
   const [active, setActive] = useState('top')
   const [soundOn, setSoundOn] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const listRef = useRef(null)
   const [pill, setPill] = useState({ left: 0, width: 0, opacity: 0 })
 
@@ -101,8 +102,55 @@ export default function TopNav() {
           >
             CONTACT <span className="ml-0.5">›</span>
           </a>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? '关闭菜单' : '打开菜单'}
+            aria-expanded={menuOpen}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-line text-text transition-colors hover:border-brand md:hidden"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              {menuOpen ? (
+                <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              ) : (
+                <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              )}
+            </svg>
+          </button>
         </div>
       </nav>
+
+      {/* 移动端抽屉菜单 */}
+      {menuOpen && (
+        <nav
+          className="fixed inset-x-0 top-16 z-40 border-b border-line/70 bg-bg/95 backdrop-blur-md md:hidden"
+          aria-label="移动端导航"
+        >
+          <div className="flex flex-col px-6 py-4">
+            {NAV.map((n) => (
+              <a
+                key={n.id}
+                href={`#${n.id}`}
+                onClick={() => setMenuOpen(false)}
+                className={`flex items-center justify-between border-b border-line/40 py-3.5 transition-colors ${
+                  active === n.id ? 'text-brand' : 'text-text hover:text-brand'
+                }`}
+              >
+                <span className="mono text-[12px] tracking-[0.16em]">{n.en}</span>
+                <span className="cn text-[12px] text-mute">{n.cn}</span>
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center justify-between py-3.5 text-brand"
+            >
+              <span className="mono text-[12px] tracking-[0.16em]">CONTACT</span>
+              <span className="cn text-[12px] text-mute">联系</span>
+            </a>
+          </div>
+        </nav>
+      )}
     </header>
   )
 }

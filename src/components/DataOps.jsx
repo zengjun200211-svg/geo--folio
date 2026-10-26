@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SectionHeader from './SectionHeader.jsx'
 import ViewFrame from './ViewFrame.jsx'
 import { DATA_OPS_ANNOTATIONS } from '../data/content.js'
@@ -44,6 +44,15 @@ const SHOTS = [
 export default function DataOps() {
   const [idx, setIdx] = useState(0)
   const [zoom, setZoom] = useState(false)
+
+  useEffect(() => {
+    if (!zoom) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') setZoom(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [zoom])
   const shot = SHOTS[idx]
   const prev = () => setIdx((i) => (i - 1 + SHOTS.length) % SHOTS.length)
   const next = () => setIdx((i) => (i + 1) % SHOTS.length)
@@ -219,6 +228,9 @@ export default function DataOps() {
 
       {zoom && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={shot.cn}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-8 cursor-zoom-out"
           onClick={() => setZoom(false)}
         >
@@ -228,7 +240,7 @@ export default function DataOps() {
             className="max-h-full max-w-full object-contain rounded-lg shadow-2xl"
           />
           <p className="absolute bottom-6 left-1/2 -translate-x-1/2 mono text-[11px] tracking-[0.2em] text-white/60">
-            {shot.cn} · 点击任意处关闭
+            {shot.cn} · 点击任意处关闭（Esc）
           </p>
         </div>
       )}
