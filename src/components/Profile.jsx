@@ -16,10 +16,10 @@ const TOOL_GRADIENTS = [
 ]
 
 const CORE_SKILLS = [
-  { en: 'BUSINESS', cn: '业务能力', desc: '品牌种草+IP孵化全流程操盘' },
-  { en: 'PLATFORM', cn: '平台生态', desc: '多平台分发与信源运营' },
-  { en: 'AI AGENT', cn: 'AI Agent', desc: '工作流自动化与提效' },
-  { en: 'KNOWLEDGE', cn: '知识库搭建', desc: '知识沉淀、结构化以及自我更新迭代' },
+  { en: 'BUSINESS', cn: '业务能力', desc: '3C 品牌种草 + IP 0→1 孵化全流程操盘，选题策划到复盘优化闭环' },
+  { en: 'PLATFORM', cn: '平台生态', desc: '抖音 / 小红书 / B站多平台矩阵分发，熟悉平台算法与信源运营，构建 GEO 布局' },
+  { en: 'AI AGENT', cn: 'AI Agent', desc: 'AI Agent 工作流自动化提效，AI 文案 / 绘图 / 剪辑全链路落地应用' },
+  { en: 'KNOWLEDGE', cn: '知识库搭建', desc: '飞书多维表格 + Obsidian 搭建知识库与数据中台，SOP 沉淀并持续迭代' },
 ]
 
 function ToolTile({ name, slug, color, local, glyph, cardColor }) {
@@ -135,7 +135,7 @@ export default function Profile() {
                   CONTENT OPS <span className="text-brand">→</span> GEO
                 </p>
                 <p className="cn mt-3 text-[12.5px] leading-[1.9] text-sub">
-                  仲恺农业工程学院 · 环境工程 2021–2025。IP 0-1孵化与多媒体平台分发；擅长用 AI + Agent + 知识库把内容生产结构化。
+                  仲恺农业工程学院 · 环境工程 2021–2025。专注内容运营：主导 6 个 3C 数码矩阵账号从 0→1，孵化 5 个万粉 IP，矩阵累计 1400W+ 播放；熟悉抖音 / 小红书 / B站等多平台生态；擅长用 AI + Agent + 知识库，把内容生产结构化、可规模化。
                 </p>
               </div>
               {/* 核心能力 */}
